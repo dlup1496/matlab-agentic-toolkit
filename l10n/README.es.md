@@ -2,7 +2,7 @@
 Source English Markdown:
 - File: ./README.md
 - Branch: main
-- Commit: a8c3d13fe0c8ebd9c05454bb38f13e5904eeabc4
+- Commit: 99face6879f8ff173a5dee635d0918d10e21d40c
 -->
 
 # MATLAB Agentic Toolkit
@@ -27,7 +27,7 @@ Use este toolkit para:
 - Proporcionar conocimientos seleccionados, llamados skills, a su agente. Estas skills equipan a su agente con conocimiento de flujos de trabajo, convenciones y buenas prácticas de MATLAB, a la vez que minimizan el consumo de tokens.
 
 > [!Note]
-> Para usar agentes de IA solamente con Simulink&reg;, instale el [Simulink Agentic Toolkit](https://github.com/matlab/simulink-agentic-toolkit). Para instalar ambos toolkits, use el [Agentic Toolkit Installer](#instalar-matlab-agentic-toolkit).
+> Para usar agentes de IA de forma eficiente con Simulink&reg;, instale [Simulink Agentic Toolkit](https://github.com/matlab/simulink-agentic-toolkit). Al instalar cualquiera de los dos toolkits, puede elegir instalar ambos.
 
 ## Requisitos
 
@@ -46,11 +46,11 @@ Estos pasos muestran cómo usar MATLAB Agentic Toolkit para instalar MATLAB MCP 
 
 > Nota: Para obtener instrucciones sobre la instalación desde archivos locales, la instalación en un entorno sin conexión, las opciones de configuración de este toolkit, notas específicas de la plataforma, pasos de verificación, resolución de problemas y la configuración manual sin el instalador, consulte [Configuración y solución de problemas](Configuration_and_Troubleshooting.es.md). Si ya tiene instalado el servidor MCP y solo necesita agregar skills, consulte [Agregar solo skills](Configuration_and_Troubleshooting.es.md#agregar-solo-skills).
 
-### Instalar MATLAB Agentic Toolkit
+### Instalar MATLAB Agentic Toolkit desde MATLAB
 
-Siga estos pasos para configurar MATLAB Agentic Toolkit.
+Siga estos pasos para configurar MATLAB Agentic Toolkit en MATLAB.
 
-1. Para descargar el instalador, haga clic en [agenticToolkitInstaller.mltbx](https://github.com/matlab/simulink-agentic-toolkit/releases/latest/download/agenticToolkitInstaller.mltbx).
+1. Para descargar el paquete del instalador de Agentic Toolkit, haga clic en [agenticToolkitInstaller.mltbx](https://github.com/matlab/simulink-agentic-toolkit/releases/latest/download/agenticToolkitInstaller.mltbx).
 2. Abra el archivo descargado con MATLAB para instalar el complemento del instalador.
 3. En MATLAB, ejecute este comando.
 
@@ -68,6 +68,11 @@ shareMATLABSession()
 Si está ejecutando varias sesiones de MATLAB, el agente se conecta a la sesión de MATLAB donde ejecutó este comando más recientemente.
 
 Como alternativa, también puede agregar este comando a su [Startup Script](https://www.mathworks.com/help/matlab/ref/startup.html) de MATLAB.
+
+### Instalar MATLAB Agentic Toolkit desde la línea de comandos
+
+Si usa Claude Code u OpenAI Codex, también puede configurar MATLAB Agentic Toolkit, Simulink Agentic Toolkit y MATLAB MCP Server a la vez desde una línea de comandos del sistema operativo mediante Agentic Toolkit Installer. Para obtener más detalles, consulte [Agentic Toolkit Installer](https://github.com/matlab/agentic-toolkit-installer).
+
 
 ### Verificar
 Pregunte a su agente:
@@ -100,33 +105,32 @@ Después de instalar MATLAB Agentic Toolkit, su agente puede usar skills selecci
 | [**MATLAB Core**](skills-catalog/README.es.md#matlab-core-matlab-core) | Crear, depurar, revisar y administrar código e instalaciones de MATLAB |
 | [**MATLAB App Building**](skills-catalog/README.es.md#matlab-app-building-matlab-app-building) | Compilar aplicaciones de MATLAB programáticamente usando componentes de interfaz de usuario, diseños, callbacks e integración web |
 | [**MATLAB Data Import and Analysis**](skills-catalog/README.es.md#matlab-data-import-and-analysis-matlab-data-import-and-analysis) | Importar, exportar y analizar datos en MATLAB usando tablas, horarios, filtrado, agregación y operaciones de series temporales |
-| [**MATLAB Environment and Settings**](skills-catalog/README.es.md#matlab-environment-and-settings-matlab-environment-and-settings) | Comparar ajustes de MATLAB entre versiones y migrar scripts de inicio a rutas de ajustes correctas |
 | [**MATLAB External Language Interfaces**](skills-catalog/README.es.md#matlab-external-language-interfaces-matlab-external-language-interfaces) | Invocar bibliotecas de Python&reg; desde MATLAB y actualizar archivos MEX a la API interleaved complex |
 | [**MATLAB Programming**](skills-catalog/README.es.md#matlab-programming-matlab-programming) | Escribir funciones de MATLAB robustas con entradas validadas |
-| [**MATLAB Software Development**](skills-catalog/README.es.md#matlab-software-development-matlab-software-development) | Escribir y ejecutar pruebas, modernizar código heredado, optimizar rendimiento y memoria, documentar y crear toolboxes, crear proyectos y desarrollar planes de compilación |
+| [**MATLAB Software Development**](skills-catalog/README.es.md#matlab-software-development-matlab-software-development) | Escribir y ejecutar pruebas, modernizar código heredado, optimizar rendimiento y memoria, documentar y crear toolboxes, crear proyectos, administrar paquetes y desarrollar planes de compilación |
 
 #### Skills de toolboxes
 
 | Grupo de skills | Productos compatibles |
 |-------------|--------------------|
-| [**Aerospace**](skills-catalog/README.es.md#aerospace-aerospace) | MATLAB, Aerospace Toolbox&trade; |
-| [**AI and Statistics**](skills-catalog/README.es.md#ai-and-statistics-ai-and-statistics) | MATLAB, Simulink, Curve Fitting Toolbox&trade;, Deep Learning Toolbox&trade;, Embedded Coder&trade;, Fixed-Point Designer&trade;, MATLAB Coder&trade;, MATLAB Compiler SDK&trade;, MATLAB Report Generator&trade;, Optimization Toolbox&trade;, Parallel Computing Toolbox&trade;, Statistics and Machine Learning Toolbox&trade;, Deep Learning Toolbox Converter for ONNX Model Format&trade;, Deep Learning Toolbox Converter for PyTorch Models&trade; y Deep Learning Toolbox Converter for TensorFlow Models&trade; |
-| [**Automotive**](skills-catalog/README.es.md#automotive-automotive) | MATLAB, Simulink, Automated Driving Toolbox&trade;, Computer Vision Toolbox&trade;, RoadRunner, RoadRunner Scenario, RoadRunner Scene Builder, Sensor Fusion and Tracking Toolbox&trade;, Automated Driving Toolbox Interface for Eclipse SUMO Traffic Simulator&trade; y Scenario Builder for Automated Driving Toolbox&trade; |
-| [**Cloud Solutions**](skills-catalog/README.es.md#cloud-solutions-cloud-solutions) | MATLAB, MATLAB Drive&trade; |
-| [**Code Generation**](skills-catalog/README.es.md#code-generation-code-generation) | MATLAB, Embedded Coder, Fixed-Point Designer, GPU Coder&trade;, MATLAB Coder, MATLAB Test&trade;, Parallel Computing Toolbox y MATLAB Coder Support Package for PyTorch and LiteRT Models&trade; |
-| [**Computational Biology**](skills-catalog/README.es.md#computational-biology-computational-biology) | MATLAB, SimBiology&trade; y Statistics and Machine Learning Toolbox |
-| [**Computational Finance**](skills-catalog/README.es.md#computational-finance-computational-finance) | MATLAB, Datafeed Toolbox&trade;, Financial Instruments Toolbox&trade;, Financial Toolbox&trade; y Spreadsheet Link&trade; |
-| [**Control Systems**](skills-catalog/README.es.md#control-systems-control-systems) | MATLAB, Control System Toolbox&trade;, Predictive Maintenance Toolbox&trade;, Signal Processing Toolbox&trade;, Statistics and Machine Learning Toolbox y System Identification Toolbox&trade; |
-| [**Image Processing and Computer Vision**](skills-catalog/README.es.md#image-processing-and-computer-vision-image-processing-and-computer-vision) | MATLAB, Computer Vision Toolbox, Deep Learning Toolbox, Image Processing Toolbox&trade;, Lidar Toolbox&trade;, Medical Imaging Toolbox&trade; y Optical Design and Simulation Library for Image Processing Toolbox&trade; |
-| [**Math and Optimization**](skills-catalog/README.es.md#math-and-optimization-math-and-optimization) | MATLAB, Optimization Toolbox, Partial Differential Equation Toolbox&trade; y Symbolic Math Toolbox&trade; |
-| [**Parallel Computing**](skills-catalog/README.es.md#parallel-computing-parallel-computing) | MATLAB, Parallel Computing Toolbox y MATLAB Parallel Server&trade; |
-| [**Radar**](skills-catalog/README.es.md#radar-radar) | MATLAB, Mapping Toolbox&trade;, Phased Array System Toolbox&trade;, Radar Toolbox&trade;, Sensor Fusion and Tracking Toolbox y Signal Processing Toolbox |
-| [**Reporting and Database Access**](skills-catalog/README.es.md#reporting-and-database-access-reporting-and-database-access) | MATLAB, Database Toolbox&trade;, MATLAB Report Generator, Parallel Computing Toolbox y Simulink Report Generator&trade; |
-| [**RF and Mixed Signal**](skills-catalog/README.es.md#rf-and-mixed-signal-rf-and-mixed-signal) | MATLAB, Simulink, Antenna Toolbox&trade;, Mixed-Signal Blockset&trade;, RF Blockset&trade;, RF PCB Toolbox&trade;, RF Toolbox&trade;, SerDes Toolbox&trade;, Signal Integrity Toolbox, Signal Processing Toolbox y Statistics and Machine Learning Toolbox |
-| [**Robotics and Autonomous Systems**](skills-catalog/README.es.md#robotics-and-autonomous-systems-robotics-and-autonomous-systems) | MATLAB, Navigation Toolbox&trade;, UAV Toolbox&trade; y Robotics System Toolbox&trade; |
-| [**Signal Processing**](skills-catalog/README.es.md#signal-processing-signal-processing) | MATLAB, Simulink, Audio Toolbox&trade;, DSP HDL Toolbox&trade;, DSP System Toolbox&trade;, Fixed-Point Designer, HDL Coder&trade;, Signal Processing Toolbox y Wavelet Toolbox&trade; |
-| [**Test and Measurement**](skills-catalog/README.es.md#test-and-measurement-test-and-measurement) | MATLAB, Data Acquisition Toolbox&trade;, Image Acquisition Toolbox&trade;, Image Processing Toolbox, Industrial Communication Toolbox&trade;, Vehicle Network Toolbox&trade; y MATLAB Support Package for Arduino Hardware&trade; |
-| [**Wireless Communications**](skills-catalog/README.es.md#wireless-communications-wireless-communications) | MATLAB, 5G Toolbox&trade;, Bluetooth&reg; Toolbox&trade;, Communications Toolbox&trade;, Satellite Communications Toolbox&trade;, Wireless Network Toolbox&trade;, Wireless Testbench&trade;, WLAN Toolbox&trade; y Wireless Testbench Support Package for NI USRP Radios&trade; |
+| [**Aerospace**](skills-catalog/README.es.md#aerospace-aerospace) | Aerospace Toolbox&trade; |
+| [**AI and Statistics**](skills-catalog/README.es.md#ai-and-statistics-ai-and-statistics) | Curve Fitting Toolbox&trade;, Deep Learning Toolbox&trade;, Embedded Coder&trade;, Fixed-Point Designer&trade;, MATLAB Coder&trade;, MATLAB Compiler SDK&trade;, MATLAB Report Generator&trade;, Optimization Toolbox&trade;, Parallel Computing Toolbox&trade;, Statistics and Machine Learning Toolbox&trade;, Deep Learning Toolbox Converter for ONNX Model Format&trade;, Deep Learning Toolbox Converter for PyTorch Models&trade; y Deep Learning Toolbox Converter for TensorFlow Models&trade; |
+| [**Automotive**](skills-catalog/README.es.md#automotive-automotive) | Automated Driving Toolbox&trade;, Computer Vision Toolbox&trade;, RoadRunner, RoadRunner Scenario, RoadRunner Scene Builder, Sensor Fusion and Tracking Toolbox&trade;, Automated Driving Toolbox Interface for Eclipse SUMO Traffic Simulator&trade; y Scenario Builder for Automated Driving Toolbox&trade; |
+| [**Cloud Solutions**](skills-catalog/README.es.md#cloud-solutions-cloud-solutions) | MATLAB Drive&trade; |
+| [**Code Generation**](skills-catalog/README.es.md#code-generation-code-generation) | Embedded Coder, Fixed-Point Designer, GPU Coder&trade;, MATLAB Coder, MATLAB Test&trade;, Parallel Computing Toolbox y MATLAB Coder Support Package for PyTorch and LiteRT Models&trade; |
+| [**Computational Biology**](skills-catalog/README.es.md#computational-biology-computational-biology) | SimBiology&trade; y Statistics and Machine Learning Toolbox |
+| [**Computational Finance**](skills-catalog/README.es.md#computational-finance-computational-finance) | Datafeed Toolbox&trade;, Financial Instruments Toolbox&trade;, Financial Toolbox&trade; y Spreadsheet Link&trade; |
+| [**Control Systems**](skills-catalog/README.es.md#control-systems-control-systems) | Control System Toolbox&trade;, Predictive Maintenance Toolbox&trade;, Signal Processing Toolbox&trade;, Statistics and Machine Learning Toolbox y System Identification Toolbox&trade; |
+| [**Image Processing and Computer Vision**](skills-catalog/README.es.md#image-processing-and-computer-vision-image-processing-and-computer-vision) | Computer Vision Toolbox, Deep Learning Toolbox, Image Processing Toolbox&trade;, Lidar Toolbox&trade;, Medical Imaging Toolbox&trade;, Optical Design and Simulation Library for Image Processing Toolbox&trade; y Visual Inspection Toolbox&trade; |
+| [**Math and Optimization**](skills-catalog/README.es.md#math-and-optimization-math-and-optimization) | Optimization Toolbox, Partial Differential Equation Toolbox&trade; y Symbolic Math Toolbox&trade; |
+| [**Parallel Computing**](skills-catalog/README.es.md#parallel-computing-parallel-computing) | Parallel Computing Toolbox y MATLAB Parallel Server&trade; |
+| [**Radar**](skills-catalog/README.es.md#radar-radar) | Mapping Toolbox&trade;, Phased Array System Toolbox&trade;, Radar Toolbox&trade;, Sensor Fusion and Tracking Toolbox y Signal Processing Toolbox |
+| [**Reporting and Database Access**](skills-catalog/README.es.md#reporting-and-database-access-reporting-and-database-access) | Database Toolbox&trade;, MATLAB Report Generator, Parallel Computing Toolbox y Simulink Report Generator&trade; |
+| [**RF and Mixed Signal**](skills-catalog/README.es.md#rf-and-mixed-signal-rf-and-mixed-signal) | Antenna Toolbox&trade;, Mixed-Signal Blockset&trade;, RF Blockset&trade;, RF PCB Toolbox&trade;, RF Toolbox&trade;, SerDes Toolbox&trade;, Signal Integrity Toolbox, Signal Processing Toolbox y Statistics and Machine Learning Toolbox |
+| [**Robotics and Autonomous Systems**](skills-catalog/README.es.md#robotics-and-autonomous-systems-robotics-and-autonomous-systems) | Navigation Toolbox&trade;, UAV Toolbox&trade; y Robotics System Toolbox&trade; |
+| [**Signal Processing**](skills-catalog/README.es.md#signal-processing-signal-processing) | Audio Toolbox&trade;, DSP HDL Toolbox&trade;, DSP System Toolbox&trade;, Fixed-Point Designer, HDL Coder&trade;, Signal Processing Toolbox y Wavelet Toolbox&trade; |
+| [**Test and Measurement**](skills-catalog/README.es.md#test-and-measurement-test-and-measurement) | Data Acquisition Toolbox&trade;, Image Acquisition Toolbox&trade;, Image Processing Toolbox, Industrial Communication Toolbox&trade;, Vehicle Network Toolbox&trade; y MATLAB Support Package for Arduino Hardware&trade; |
+| [**Wireless Communications**](skills-catalog/README.es.md#wireless-communications-wireless-communications) | 5G Toolbox&trade;, Bluetooth&reg; Toolbox&trade;, Communications Toolbox&trade;, Satellite Communications Toolbox&trade;, Wireless Network Toolbox&trade;, Wireless Testbench&trade;, WLAN Toolbox&trade; y Wireless Testbench Support Package for NI USRP Radios&trade; |
 <!-- END SKILLS -->
 ---
 ## Actualizar MATLAB Agentic Toolkit

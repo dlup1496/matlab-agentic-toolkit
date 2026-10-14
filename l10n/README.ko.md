@@ -2,7 +2,7 @@
 Source English Markdown:
 - File: ./README.md
 - Branch: main
-- Commit: a8c3d13fe0c8ebd9c05454bb38f13e5904eeabc4
+- Commit: 99face6879f8ff173a5dee635d0918d10e21d40c
 -->
 
 # MATLAB Agentic Toolkit
@@ -27,7 +27,7 @@ MATLAB&reg; Agentic Toolkit은 AI 에이전트가 MATLAB 및 해당 툴박스와
 - 스킬(Skill)이라고 하는 엄선된 전문 지식을 에이전트에 제공합니다. 이러한 스킬은 에이전트에 MATLAB 워크플로, 규칙(conventions) 및 모범 사례(best practices)에 대한 지식을 제공하는 동시에 토큰 사용량을 최소화합니다.
 
 > [!Note]
-> AI 에이전트를 Simulink&reg;에서만 사용하려면 [Simulink Agentic Toolkit](https://github.com/matlab/simulink-agentic-toolkit)을 설치하십시오. 두 툴킷을 모두 설치하려면 [Agentic Toolkit 인스톨러](#matlab-agentic-toolkit-설치)를 사용하십시오.
+> AI 에이전트를 Simulink&reg;에서 효율적으로 사용하려면 [Simulink Agentic Toolkit](https://github.com/matlab/simulink-agentic-toolkit)을 설치하십시오. 두 툴킷 중 하나를 설치할 때 두 툴킷을 모두 설치하도록 선택할 수 있습니다.
 
 
 ## 요구 사항
@@ -47,11 +47,11 @@ MATLAB&reg; Agentic Toolkit은 AI 에이전트가 MATLAB 및 해당 툴박스와
 
 > 참고: 로컬 파일에서의 설치, 오프라인 환경에서의 설치, 이 툴킷의 구성 옵션, 플랫폼별 참고 사항, 검증 절차, 문제 해결 및 인스톨러를 사용하지 않는 수동 설정에 대한 지침은 [구성 및 문제 해결](Configuration_and_Troubleshooting.ko.md)을 참조하십시오. MCP 서버가 이미 설치되어 있고 스킬만 추가해야 하는 경우 [스킬만 추가하기](Configuration_and_Troubleshooting.ko.md#adding-skills-only)를 참조하십시오.
 
-### MATLAB Agentic Toolkit 설치
+### MATLAB에서 MATLAB Agentic Toolkit 설치
 
-다음 단계에 따라 MATLAB Agentic Toolkit을 설치하십시오.
+다음 단계에 따라 MATLAB에서 MATLAB Agentic Toolkit을 설치하십시오.
 
-1. 인스톨러를 다운로드하려면 [agenticToolkitInstaller.mltbx](https://github.com/matlab/simulink-agentic-toolkit/releases/latest/download/agenticToolkitInstaller.mltbx)를 클릭하십시오.
+1. Agentic Toolkit 인스톨러 패키지를 다운로드하려면 [agenticToolkitInstaller.mltbx](https://github.com/matlab/simulink-agentic-toolkit/releases/latest/download/agenticToolkitInstaller.mltbx)를 클릭하십시오.
 2. 다운로드한 파일을 MATLAB에서 열어 인스톨러 애드온을 설치하십시오.
 3. MATLAB에서 다음 명령을 실행하십시오.
 
@@ -69,6 +69,10 @@ shareMATLABSession()
 여러 MATLAB 세션을 실행 중인 경우 에이전트는 이 명령을 가장 최근에 실행한 MATLAB 세션에 연결됩니다.
 
 또는 이 명령을 MATLAB [시작 스크립트](https://www.mathworks.com/help/matlab/ref/startup.html)에 추가할 수도 있습니다.
+
+### 명령줄에서 MATLAB Agentic Toolkit 설치
+
+Claude Code 또는 OpenAI Codex를 사용하는 경우, Agentic Toolkit 인스톨러를 사용하여 운영 체제 명령줄에서 MATLAB Agentic Toolkit, Simulink Agentic Toolkit 및 MATLAB MCP Server를 함께 설정할 수도 있습니다. 자세한 내용은 [Agentic Toolkit 인스톨러](https://github.com/matlab/agentic-toolkit-installer)를 참조하십시오.
 
 
 ### 검증
@@ -102,33 +106,32 @@ MATLAB Agentic Toolkit을 설치한 후에는 에이전트가 MathWorks&reg;가 
 | [**MATLAB 코어**](skills-catalog/README.ko.md#matlab-코어-matlab-core) | MATLAB 코드를 생성, 디버그, 검토하고 MATLAB 설치를 관리 |
 | [**MATLAB 앱 작성**](skills-catalog/README.ko.md#matlab-앱-작성-matlab-app-building) | UI 컴포넌트, 레이아웃, 콜백, 웹 통합을 사용하여 프로그래밍 방식으로 MATLAB 앱 작성 |
 | [**MATLAB 데이터 가져오기 및 분석**](skills-catalog/README.ko.md#matlab-데이터-가져오기-및-분석-matlab-data-import-and-analysis) | 테이블, 타임테이블, 필터링, 집계, 시계열 연산을 사용하여 MATLAB에서 데이터 가져오기, 내보내기 및 분석 |
-| [**MATLAB 환경 및 설정**](skills-catalog/README.ko.md#matlab-환경-및-설정-matlab-environment-and-settings) | MATLAB 릴리스 간 설정 차이를 비교하고, 시작 스크립트(Startup Script)가 올바른 설정 경로를 사용하도록 마이그레이션 |
 | [**MATLAB 외부 언어 인터페이스**](skills-catalog/README.ko.md#matlab-외부-언어-인터페이스-matlab-external-language-interfaces) | MATLAB에서 Python&reg; 라이브러리를 호출하고, MEX 파일을 interleaved complex API(실수부/허수부 결합형 복소수 API)로 업그레이드 |
 | [**MATLAB 프로그래밍**](skills-catalog/README.ko.md#matlab-프로그래밍-matlab-programming) | 입력값 유효성을 검사하는 견고한 MATLAB 함수 작성 |
-| [**MATLAB 소프트웨어 개발**](skills-catalog/README.ko.md#matlab-소프트웨어-개발-matlab-software-development) | 테스트 작성 및 실행, 레거시 코드 현대화, 성능 및 메모리 최적화, 툴박스 문서화 및 생성, 프로젝트 생성, 빌드 계획 개발 |
+| [**MATLAB 소프트웨어 개발**](skills-catalog/README.ko.md#matlab-소프트웨어-개발-matlab-software-development) | 테스트 작성 및 실행, 레거시 코드 현대화, 성능 및 메모리 최적화, 툴박스 문서화 및 생성, 프로젝트 생성, 패키지 관리, 빌드 계획 개발 |
 
 #### 툴박스 스킬
 
 | 스킬 그룹 | 지원 제품 |
 |-------------|--------------------|
-| [**항공우주**](skills-catalog/README.ko.md#항공우주-aerospace) | MATLAB, Aerospace Toolbox&trade; |
-| [**AI 및 통계학**](skills-catalog/README.ko.md#ai-및-통계학-ai-and-statistics) | MATLAB, Simulink, Curve Fitting Toolbox&trade;, Deep Learning Toolbox&trade;, Embedded Coder&trade;, Fixed-Point Designer&trade;, MATLAB Coder&trade;, MATLAB Compiler SDK&trade;, MATLAB Report Generator&trade;, Optimization Toolbox&trade;, Parallel Computing Toolbox&trade;, Statistics and Machine Learning Toolbox&trade;, Deep Learning Toolbox Converter for ONNX Model Format&trade;, Deep Learning Toolbox Converter for PyTorch Models&trade;, Deep Learning Toolbox Converter for TensorFlow Models&trade; |
-| [**자동차**](skills-catalog/README.ko.md#자동차-automotive) | MATLAB, Simulink, Automated Driving Toolbox&trade;, Computer Vision Toolbox&trade;, RoadRunner, RoadRunner Scenario, RoadRunner Scene Builder, Sensor Fusion and Tracking Toolbox&trade;, Automated Driving Toolbox Interface for Eclipse SUMO Traffic Simulator&trade;, Scenario Builder for Automated Driving Toolbox&trade; |
-| [**클라우드 솔루션**](skills-catalog/README.ko.md#클라우드-솔루션-cloud-solutions) | MATLAB, MATLAB Drive&trade; |
-| [**코드 생성**](skills-catalog/README.ko.md#코드-생성-code-generation) | MATLAB, Embedded Coder, Fixed-Point Designer, GPU Coder&trade;, MATLAB Coder, MATLAB Test&trade;, Parallel Computing Toolbox, MATLAB Coder Support Package for PyTorch and LiteRT Models&trade; |
-| [**계산 생물학**](skills-catalog/README.ko.md#계산-생물학-computational-biology) | MATLAB, SimBiology&trade;, Statistics and Machine Learning Toolbox |
-| [**계산 금융**](skills-catalog/README.ko.md#계산-금융-computational-finance) | MATLAB, Datafeed Toolbox&trade;, Financial Instruments Toolbox&trade;, Financial Toolbox&trade;, Spreadsheet Link&trade; |
-| [**제어 시스템**](skills-catalog/README.ko.md#제어-시스템-control-systems) | MATLAB, Control System Toolbox&trade;, Predictive Maintenance Toolbox&trade;, Signal Processing Toolbox&trade;, Statistics and Machine Learning Toolbox, System Identification Toolbox&trade; |
-| [**영상 처리 및 컴퓨터 비전**](skills-catalog/README.ko.md#영상-처리-및-컴퓨터-비전-image-processing-and-computer-vision) | MATLAB, Computer Vision Toolbox, Deep Learning Toolbox, Image Processing Toolbox&trade;, Lidar Toolbox&trade;, Medical Imaging Toolbox&trade;, Optical Design and Simulation Library for Image Processing Toolbox&trade; |
-| [**수학 및 최적화**](skills-catalog/README.ko.md#수학-및-최적화-math-and-optimization) | MATLAB, Optimization Toolbox, Partial Differential Equation Toolbox&trade;, Symbolic Math Toolbox&trade; |
-| [**병렬 연산**](skills-catalog/README.ko.md#병렬-연산-parallel-computing) | MATLAB, Parallel Computing Toolbox, MATLAB Parallel Server&trade; |
-| [**레이다**](skills-catalog/README.ko.md#레이다-radar) | MATLAB, Mapping Toolbox&trade;, Phased Array System Toolbox&trade;, Radar Toolbox&trade;, Sensor Fusion and Tracking Toolbox, Signal Processing Toolbox |
-| [**리포팅 및 데이터베이스 액세스**](skills-catalog/README.ko.md#리포팅-및-데이터베이스-액세스-reporting-and-database-access) | MATLAB, Database Toolbox&trade;, MATLAB Report Generator, Parallel Computing Toolbox, Simulink Report Generator&trade; |
-| [**RF 및 혼성 신호**](skills-catalog/README.ko.md#rf-및-혼성-신호-rf-and-mixed-signal) | MATLAB, Simulink, Antenna Toolbox&trade;, Mixed-Signal Blockset&trade;, RF Blockset&trade;, RF PCB Toolbox&trade;, RF Toolbox&trade;, SerDes Toolbox&trade;, Signal Integrity Toolbox, Signal Processing Toolbox, Statistics and Machine Learning Toolbox |
-| [**로보틱스 및 자율 시스템**](skills-catalog/README.ko.md#로보틱스-및-자율-시스템-robotics-and-autonomous-systems) | MATLAB, Navigation Toolbox&trade;, UAV Toolbox&trade;, Robotics System Toolbox&trade; |
-| [**신호 처리**](skills-catalog/README.ko.md#신호-처리-signal-processing) | MATLAB, Simulink, Audio Toolbox&trade;, DSP HDL Toolbox&trade;, DSP System Toolbox&trade;, Fixed-Point Designer, HDL Coder&trade;, Signal Processing Toolbox, Wavelet Toolbox&trade; |
-| [**테스트 및 계측**](skills-catalog/README.ko.md#테스트-및-계측-test-and-measurement) | MATLAB, Data Acquisition Toolbox&trade;, Image Acquisition Toolbox&trade;, Image Processing Toolbox, Industrial Communication Toolbox&trade;, Vehicle Network Toolbox&trade;, MATLAB Support Package for Arduino Hardware&trade; |
-| [**무선 통신**](skills-catalog/README.ko.md#무선-통신-wireless-communications) | MATLAB, 5G Toolbox&trade;, Bluetooth&reg; Toolbox&trade;, Communications Toolbox&trade;, Satellite Communications Toolbox&trade;, Wireless Network Toolbox&trade;, Wireless Testbench&trade;, WLAN Toolbox&trade;, Wireless Testbench Support Package for NI USRP Radios&trade; |
+| [**항공우주**](skills-catalog/README.ko.md#항공우주-aerospace) | Aerospace Toolbox&trade; |
+| [**AI 및 통계학**](skills-catalog/README.ko.md#ai-및-통계학-ai-and-statistics) | Curve Fitting Toolbox&trade;, Deep Learning Toolbox&trade;, Embedded Coder&trade;, Fixed-Point Designer&trade;, MATLAB Coder&trade;, MATLAB Compiler SDK&trade;, MATLAB Report Generator&trade;, Optimization Toolbox&trade;, Parallel Computing Toolbox&trade;, Statistics and Machine Learning Toolbox&trade;, Deep Learning Toolbox Converter for ONNX Model Format&trade;, Deep Learning Toolbox Converter for PyTorch Models&trade;, Deep Learning Toolbox Converter for TensorFlow Models&trade; |
+| [**자동차**](skills-catalog/README.ko.md#자동차-automotive) | Automated Driving Toolbox&trade;, Computer Vision Toolbox&trade;, RoadRunner, RoadRunner Scenario, RoadRunner Scene Builder, Sensor Fusion and Tracking Toolbox&trade;, Automated Driving Toolbox Interface for Eclipse SUMO Traffic Simulator&trade;, Scenario Builder for Automated Driving Toolbox&trade; |
+| [**클라우드 솔루션**](skills-catalog/README.ko.md#클라우드-솔루션-cloud-solutions) | MATLAB Drive&trade; |
+| [**코드 생성**](skills-catalog/README.ko.md#코드-생성-code-generation) | Embedded Coder, Fixed-Point Designer, GPU Coder&trade;, MATLAB Coder, MATLAB Test&trade;, Parallel Computing Toolbox, MATLAB Coder Support Package for PyTorch and LiteRT Models&trade; |
+| [**계산 생물학**](skills-catalog/README.ko.md#계산-생물학-computational-biology) | SimBiology&trade;, Statistics and Machine Learning Toolbox |
+| [**계산 금융**](skills-catalog/README.ko.md#계산-금융-computational-finance) | Datafeed Toolbox&trade;, Financial Instruments Toolbox&trade;, Financial Toolbox&trade;, Spreadsheet Link&trade; |
+| [**제어 시스템**](skills-catalog/README.ko.md#제어-시스템-control-systems) | Control System Toolbox&trade;, Predictive Maintenance Toolbox&trade;, Signal Processing Toolbox&trade;, Statistics and Machine Learning Toolbox, System Identification Toolbox&trade; |
+| [**영상 처리 및 컴퓨터 비전**](skills-catalog/README.ko.md#영상-처리-및-컴퓨터-비전-image-processing-and-computer-vision) | Computer Vision Toolbox, Deep Learning Toolbox, Image Processing Toolbox&trade;, Lidar Toolbox&trade;, Medical Imaging Toolbox&trade;, Optical Design and Simulation Library for Image Processing Toolbox&trade;, Visual Inspection Toolbox&trade; |
+| [**수학 및 최적화**](skills-catalog/README.ko.md#수학-및-최적화-math-and-optimization) | Optimization Toolbox, Partial Differential Equation Toolbox&trade;, Symbolic Math Toolbox&trade; |
+| [**병렬 연산**](skills-catalog/README.ko.md#병렬-연산-parallel-computing) | Parallel Computing Toolbox, MATLAB Parallel Server&trade; |
+| [**레이다**](skills-catalog/README.ko.md#레이다-radar) | Mapping Toolbox&trade;, Phased Array System Toolbox&trade;, Radar Toolbox&trade;, Sensor Fusion and Tracking Toolbox, Signal Processing Toolbox |
+| [**리포팅 및 데이터베이스 액세스**](skills-catalog/README.ko.md#리포팅-및-데이터베이스-액세스-reporting-and-database-access) | Database Toolbox&trade;, MATLAB Report Generator, Parallel Computing Toolbox, Simulink Report Generator&trade; |
+| [**RF 및 혼성 신호**](skills-catalog/README.ko.md#rf-및-혼성-신호-rf-and-mixed-signal) | Antenna Toolbox&trade;, Mixed-Signal Blockset&trade;, RF Blockset&trade;, RF PCB Toolbox&trade;, RF Toolbox&trade;, SerDes Toolbox&trade;, Signal Integrity Toolbox, Signal Processing Toolbox, Statistics and Machine Learning Toolbox |
+| [**로보틱스 및 자율 시스템**](skills-catalog/README.ko.md#로보틱스-및-자율-시스템-robotics-and-autonomous-systems) | Navigation Toolbox&trade;, UAV Toolbox&trade;, Robotics System Toolbox&trade; |
+| [**신호 처리**](skills-catalog/README.ko.md#신호-처리-signal-processing) | Audio Toolbox&trade;, DSP HDL Toolbox&trade;, DSP System Toolbox&trade;, Fixed-Point Designer, HDL Coder&trade;, Signal Processing Toolbox, Wavelet Toolbox&trade; |
+| [**테스트 및 계측**](skills-catalog/README.ko.md#테스트-및-계측-test-and-measurement) | Data Acquisition Toolbox&trade;, Image Acquisition Toolbox&trade;, Image Processing Toolbox, Industrial Communication Toolbox&trade;, Vehicle Network Toolbox&trade;, MATLAB Support Package for Arduino Hardware&trade; |
+| [**무선 통신**](skills-catalog/README.ko.md#무선-통신-wireless-communications) | 5G Toolbox&trade;, Bluetooth&reg; Toolbox&trade;, Communications Toolbox&trade;, Satellite Communications Toolbox&trade;, Wireless Network Toolbox&trade;, Wireless Testbench&trade;, WLAN Toolbox&trade;, Wireless Testbench Support Package for NI USRP Radios&trade; |
 <!-- END SKILLS -->
 ---
 ## MATLAB Agentic Toolkit 업데이트하기

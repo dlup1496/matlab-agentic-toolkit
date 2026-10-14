@@ -2,7 +2,7 @@
 Source English Markdown:
 - File: ./skills-catalog/README.md
 - Branch: main
-- Commit: a8c3d13fe0c8ebd9c05454bb38f13e5904eeabc4
+- Commit: 99face6879f8ff173a5dee635d0918d10e21d40c
 -->
 
 # 스킬 카탈로그
@@ -54,14 +54,6 @@ UI 컴포넌트, 레이아웃, 콜백, 웹 통합을 사용하여 프로그래�
 | `matlab-import-export-data` | 툴 간 데이터 충실도(cross-tool fidelity)를 유지하면서 테이블 형식 데이터, 정형 데이터, 이진 데이터를 가져오고 내보냅니다. |
 | `matlab-secure-credentials` | 내장된 MATLAB Vault를 사용하여 MATLAB에서 자격 증명을 안전하게 저장하고, 가져오고, 전달합니다. |
 
-### MATLAB 환경 및 설정 ([`matlab-environment-and-settings`](../../skills-catalog/matlab-environment-and-settings/))
-
-MATLAB 릴리스 간 설정 차이를 비교하고, 시작 스크립트(Startup Script)가 올바른 설정 경로를 사용하도록 마이그레이션
-
-| 스킬 | 에이전트에 가르치는 내용 |
-|-------|---------------------------|
-| `matlab-migrate-settings` | MATLAB 릴리스 간 설정을 비교하고, MATLAB 설정을 프로그래밍 방식으로 구성하는 MATLAB 코드 파일(.m)이 대상 릴리스에 맞는 올바른 설정 경로를 사용하도록 업데이트합니다. |
-
 ### MATLAB 외부 언어 인터페이스 ([`matlab-external-language-interfaces`](../../skills-catalog/matlab-external-language-interfaces/))
 
 MATLAB에서 Python&reg; 라이브러리를 호출하고, MEX 파일을 interleaved complex API(실수부/허수부 결합형 복소수 API)로 업그레이드
@@ -81,23 +73,25 @@ MATLAB에서 Python&reg; 라이브러리를 호출하고, MEX 파일을 interlea
 
 ### MATLAB 소프트웨어 개발 ([`matlab-software-development`](../../skills-catalog/matlab-software-development/))
 
-테스트 작성 및 실행, 레거시 코드 현대화, 성능 및 메모리 최적화, 툴박스 문서화 및 생성, 프로젝트 생성, 빌드 계획 개발
+테스트 작성 및 실행, 레거시 코드 현대화, 성능 및 메모리 최적화, 툴박스 문서화 및 생성, 프로젝트 생성, 패키지 관리, 빌드 계획 개발
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
+| `matlab-configure-toml-project` | matlab.toml 프로젝트 파일을 생성하고 편집합니다. 여기에는 폴더, 종속성, 레이블, 내보내기 프로파일, 라이프사이클 스크립트, MATLAB 패키지 메타데이터가 포함됩니다. |
 | `matlab-instrument-opentelemetry-tracing` | 올바른 컨텍스트 전파 및 라이프사이클을 적용하여 MATLAB 함수에 OpenTelemetry 추적 스팬(tracing span)을 추가합니다. |
 | `matlab-modernize-code` | 제거되었거나 권장되지 않는 MATLAB 함수와 패턴을 현대화합니다. |
 | `matlab-optimize-memory` | 구조화된 측정-프로파일링-최적화-검증 워크플로를 사용하여 MATLAB 코드의 메모리 병목 현상을 찾아 해결합니다. |
 | `matlab-optimize-performance` | MATLAB 코드의 성능을 최적화합니다. |
 | `matlab-package-toolbox` | MATLAB 코드를 설치 가능한 .mltbx 툴박스로 패키징합니다. |
 | `matlab-run-tests` | MATLAB 테스트 스위트를 실행하고, 코드 커버리지를 수집하고, CI/CD 파이프라인을 구성합니다. |
+| `matlab-use-package-manager` | 제품 내 MATLAB Package Manager(mpm)를 사용하여 MATLAB 패키지를 관리하고 검사합니다. |
 | `matlab-write-help` | MathWorks 문서화 표준에 따라 MATLAB 도움말 텍스트를 생성하거나 개선합니다. |
 | `matlab-write-performance-tests` | matlab.perftest.TestCase 프레임워크를 사용하여 MATLAB 성능 테스트를 작성합니다. |
 | `matlab-write-tests` | 클래스 기반 테스트 프레임워크를 사용하여 MATLAB 단위 테스트를 생성하고 구조화합니다. |
 
 ### 항공우주 ([`aerospace`](../../skills-catalog/aerospace/))
 
-MATLAB, Aerospace Toolbox&trade; 지원
+Aerospace Toolbox&trade; 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -106,7 +100,7 @@ MATLAB, Aerospace Toolbox&trade; 지원
 
 ### AI 및 통계학 ([`ai-and-statistics`](../../skills-catalog/ai-and-statistics/))
 
-MATLAB, Simulink, Curve Fitting Toolbox&trade;, Deep Learning Toolbox&trade;, Embedded Coder&trade;, Fixed-Point Designer&trade;, MATLAB Coder&trade;, MATLAB Compiler SDK&trade;, MATLAB Report Generator&trade;, Optimization Toolbox&trade;, Parallel Computing Toolbox&trade;, Statistics and Machine Learning Toolbox&trade;, Deep Learning Toolbox Converter for ONNX Model Format&trade;, Deep Learning Toolbox Converter for PyTorch Models&trade;, Deep Learning Toolbox Converter for TensorFlow Models&trade; 지원
+Curve Fitting Toolbox&trade;, Deep Learning Toolbox&trade;, Embedded Coder&trade;, Fixed-Point Designer&trade;, MATLAB Coder&trade;, MATLAB Compiler SDK&trade;, MATLAB Report Generator&trade;, Optimization Toolbox&trade;, Parallel Computing Toolbox&trade;, Statistics and Machine Learning Toolbox&trade;, Deep Learning Toolbox Converter for ONNX Model Format&trade;, Deep Learning Toolbox Converter for PyTorch Models&trade;, Deep Learning Toolbox Converter for TensorFlow Models&trade; 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -123,7 +117,7 @@ MATLAB, Simulink, Curve Fitting Toolbox&trade;, Deep Learning Toolbox&trade;, Em
 
 ### 자동차 ([`automotive`](../../skills-catalog/automotive/))
 
-MATLAB, Simulink, Automated Driving Toolbox&trade;, Computer Vision Toolbox&trade;, RoadRunner, RoadRunner Scenario, RoadRunner Scene Builder, Sensor Fusion and Tracking Toolbox&trade;, Automated Driving Toolbox Interface for Eclipse SUMO Traffic Simulator&trade;, Scenario Builder for Automated Driving Toolbox&trade; 지원
+Automated Driving Toolbox&trade;, Computer Vision Toolbox&trade;, RoadRunner, RoadRunner Scenario, RoadRunner Scene Builder, Sensor Fusion and Tracking Toolbox&trade;, Automated Driving Toolbox Interface for Eclipse SUMO Traffic Simulator&trade;, Scenario Builder for Automated Driving Toolbox&trade; 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -142,7 +136,7 @@ MATLAB, Simulink, Automated Driving Toolbox&trade;, Computer Vision Toolbox&trad
 
 ### 클라우드 솔루션 ([`cloud-solutions`](../../skills-catalog/cloud-solutions/))
 
-MATLAB, MATLAB Drive&trade; 지원
+MATLAB Drive&trade; 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -150,7 +144,7 @@ MATLAB, MATLAB Drive&trade; 지원
 
 ### 코드 생성 ([`code-generation`](../../skills-catalog/code-generation/))
 
-MATLAB, Embedded Coder, Fixed-Point Designer, GPU Coder&trade;, MATLAB Coder, MATLAB Test&trade;, Parallel Computing Toolbox, MATLAB Coder Support Package for PyTorch and LiteRT Models&trade; 지원
+Embedded Coder, Fixed-Point Designer, GPU Coder&trade;, MATLAB Coder, MATLAB Test&trade;, Parallel Computing Toolbox, MATLAB Coder Support Package for PyTorch and LiteRT Models&trade; 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -162,7 +156,7 @@ MATLAB, Embedded Coder, Fixed-Point Designer, GPU Coder&trade;, MATLAB Coder, MA
 
 ### 계산 생물학 ([`computational-biology`](../../skills-catalog/computational-biology/))
 
-MATLAB, SimBiology&trade;, Statistics and Machine Learning Toolbox 지원
+SimBiology&trade;, Statistics and Machine Learning Toolbox 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -172,7 +166,7 @@ MATLAB, SimBiology&trade;, Statistics and Machine Learning Toolbox 지원
 
 ### 계산 금융 ([`computational-finance`](../../skills-catalog/computational-finance/))
 
-MATLAB, Datafeed Toolbox&trade;, Financial Instruments Toolbox&trade;, Financial Toolbox&trade;, Spreadsheet Link&trade; 지원
+Datafeed Toolbox&trade;, Financial Instruments Toolbox&trade;, Financial Toolbox&trade;, Spreadsheet Link&trade; 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -183,7 +177,7 @@ MATLAB, Datafeed Toolbox&trade;, Financial Instruments Toolbox&trade;, Financial
 
 ### 제어 시스템 ([`control-systems`](../../skills-catalog/control-systems/))
 
-MATLAB, Control System Toolbox&trade;, Predictive Maintenance Toolbox&trade;, Signal Processing Toolbox&trade;, Statistics and Machine Learning Toolbox, System Identification Toolbox&trade; 지원
+Control System Toolbox&trade;, Predictive Maintenance Toolbox&trade;, Signal Processing Toolbox&trade;, Statistics and Machine Learning Toolbox, System Identification Toolbox&trade; 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -193,7 +187,7 @@ MATLAB, Control System Toolbox&trade;, Predictive Maintenance Toolbox&trade;, Si
 
 ### 영상 처리 및 컴퓨터 비전 ([`image-processing-and-computer-vision`](../../skills-catalog/image-processing-and-computer-vision/))
 
-MATLAB, Computer Vision Toolbox, Deep Learning Toolbox, Image Processing Toolbox&trade;, Lidar Toolbox&trade;, Medical Imaging Toolbox&trade;, Optical Design and Simulation Library for Image Processing Toolbox&trade; 지원
+Computer Vision Toolbox, Deep Learning Toolbox, Image Processing Toolbox&trade;, Lidar Toolbox&trade;, Medical Imaging Toolbox&trade;, Optical Design and Simulation Library for Image Processing Toolbox&trade;, Visual Inspection Toolbox&trade; 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -208,11 +202,11 @@ MATLAB, Computer Vision Toolbox, Deep Learning Toolbox, Image Processing Toolbox
 | `matlab-read-write-point-cloud-file` | PLY, PCD, LAS/LAZ, PCAP, E57, IDC 형식으로 3차원 포인트 클라우드 데이터를 읽고 씁니다. |
 | `matlab-recognize-text` | ocr() 함수를 사용하여 MATLAB에서 OCR 파이프라인을 구축합니다. |
 | `matlab-register-point-clouds` | ICP, NDT, LOAM, FGR, 위상 상관(phase correlation), CPD 알고리즘을 사용하여 3차원 포인트 클라우드를 정합 및 정렬합니다. |
-| `matlab-use-visual-inspection` | Visual Inspection Toolbox&trade;를 사용하여 머신 비전 검사 시스템을 구축합니다. |
+| `matlab-use-visual-inspection` | Visual Inspection Toolbox를 사용하여 머신 비전 검사 시스템을 구축합니다. |
 
 ### 수학 및 최적화 ([`math-and-optimization`](../../skills-catalog/math-and-optimization/))
 
-MATLAB, Optimization Toolbox, Partial Differential Equation Toolbox&trade;, Symbolic Math Toolbox&trade; 지원
+Optimization Toolbox, Partial Differential Equation Toolbox&trade;, Symbolic Math Toolbox&trade; 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -222,7 +216,7 @@ MATLAB, Optimization Toolbox, Partial Differential Equation Toolbox&trade;, Symb
 
 ### 병렬 연산 ([`parallel-computing`](../../skills-catalog/parallel-computing/))
 
-MATLAB, Parallel Computing Toolbox, MATLAB Parallel Server&trade; 지원
+Parallel Computing Toolbox, MATLAB Parallel Server&trade; 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -234,7 +228,7 @@ MATLAB, Parallel Computing Toolbox, MATLAB Parallel Server&trade; 지원
 
 ### 레이다 ([`radar`](../../skills-catalog/radar/))
 
-MATLAB, Mapping Toolbox&trade;, Phased Array System Toolbox&trade;, Radar Toolbox&trade;, Sensor Fusion and Tracking Toolbox, Signal Processing Toolbox 지원
+Mapping Toolbox&trade;, Phased Array System Toolbox&trade;, Radar Toolbox&trade;, Sensor Fusion and Tracking Toolbox, Signal Processing Toolbox 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -245,7 +239,7 @@ MATLAB, Mapping Toolbox&trade;, Phased Array System Toolbox&trade;, Radar Toolbo
 
 ### 리포팅 및 데이터베이스 액세스 ([`reporting-and-database-access`](../../skills-catalog/reporting-and-database-access/))
 
-MATLAB, Database Toolbox&trade;, MATLAB Report Generator, Parallel Computing Toolbox, Simulink Report Generator&trade; 지원
+Database Toolbox&trade;, MATLAB Report Generator, Parallel Computing Toolbox, Simulink Report Generator&trade; 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -256,7 +250,7 @@ MATLAB, Database Toolbox&trade;, MATLAB Report Generator, Parallel Computing Too
 
 ### RF 및 혼성 신호 ([`rf-and-mixed-signal`](../../skills-catalog/rf-and-mixed-signal/))
 
-MATLAB, Simulink, Antenna Toolbox&trade;, Mixed-Signal Blockset&trade;, RF Blockset&trade;, RF PCB Toolbox&trade;, RF Toolbox&trade;, SerDes Toolbox&trade;, Signal Integrity Toolbox, Signal Processing Toolbox, Statistics and Machine Learning Toolbox 지원
+Antenna Toolbox&trade;, Mixed-Signal Blockset&trade;, RF Blockset&trade;, RF PCB Toolbox&trade;, RF Toolbox&trade;, SerDes Toolbox&trade;, Signal Integrity Toolbox, Signal Processing Toolbox, Statistics and Machine Learning Toolbox 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -284,7 +278,7 @@ MATLAB, Simulink, Antenna Toolbox&trade;, Mixed-Signal Blockset&trade;, RF Block
 
 ### 로보틱스 및 자율 시스템 ([`robotics-and-autonomous-systems`](../../skills-catalog/robotics-and-autonomous-systems/))
 
-MATLAB, Navigation Toolbox&trade;, UAV Toolbox&trade;, Robotics System Toolbox&trade; 지원
+Navigation Toolbox&trade;, UAV Toolbox&trade;, Robotics System Toolbox&trade; 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -297,7 +291,7 @@ MATLAB, Navigation Toolbox&trade;, UAV Toolbox&trade;, Robotics System Toolbox&t
 
 ### 신호 처리 ([`signal-processing`](../../skills-catalog/signal-processing/))
 
-MATLAB, Simulink, Audio Toolbox&trade;, DSP HDL Toolbox&trade;, DSP System Toolbox&trade;, Fixed-Point Designer, HDL Coder&trade;, Signal Processing Toolbox, Wavelet Toolbox&trade; 지원
+Audio Toolbox&trade;, DSP HDL Toolbox&trade;, DSP System Toolbox&trade;, Fixed-Point Designer, HDL Coder&trade;, Signal Processing Toolbox, Wavelet Toolbox&trade; 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -316,7 +310,7 @@ MATLAB, Simulink, Audio Toolbox&trade;, DSP HDL Toolbox&trade;, DSP System Toolb
 
 ### 테스트 및 계측 ([`test-and-measurement`](../../skills-catalog/test-and-measurement/))
 
-MATLAB, Data Acquisition Toolbox&trade;, Image Acquisition Toolbox&trade;, Image Processing Toolbox, Industrial Communication Toolbox&trade;, Vehicle Network Toolbox&trade;, MATLAB Support Package for Arduino Hardware&trade; 지원
+Data Acquisition Toolbox&trade;, Image Acquisition Toolbox&trade;, Image Processing Toolbox, Industrial Communication Toolbox&trade;, Vehicle Network Toolbox&trade;, MATLAB Support Package for Arduino Hardware&trade; 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -336,7 +330,7 @@ MATLAB, Data Acquisition Toolbox&trade;, Image Acquisition Toolbox&trade;, Image
 
 ### 무선 통신 ([`wireless-communications`](../../skills-catalog/wireless-communications/))
 
-MATLAB, 5G Toolbox&trade;, Bluetooth&reg; Toolbox&trade;, Communications Toolbox&trade;, Satellite Communications Toolbox&trade;, Wireless Network Toolbox&trade;, Wireless Testbench&trade;, WLAN Toolbox&trade;, Wireless Testbench Support Package for NI USRP Radios&trade; 지원
+5G Toolbox&trade;, Bluetooth&reg; Toolbox&trade;, Communications Toolbox&trade;, Satellite Communications Toolbox&trade;, Wireless Network Toolbox&trade;, Wireless Testbench&trade;, WLAN Toolbox&trade;, Wireless Testbench Support Package for NI USRP Radios&trade; 지원
 
 | 스킬 | 에이전트에 가르치는 내용 |
 |-------|---------------------------|
@@ -357,7 +351,7 @@ MATLAB, 5G Toolbox&trade;, Bluetooth&reg; Toolbox&trade;, Communications Toolbox
 ## 스킬 설치 방법
 
 스킬 설치 방법에 대한 자세한 내용은
-[MATLAB Agentic Toolkit 설치](../README.ko.md#matlab-agentic-toolkit-설치)를 참조하십시오.
+[MATLAB Agentic Toolkit 시작하기](../README.ko.md#matlab-agentic-toolkit-시작하기)를 참조하십시오.
 
 ----
 

@@ -2,7 +2,7 @@
 Source English Markdown:
 - File: ./skills-catalog/README.md
 - Branch: main
-- Commit: a8c3d13fe0c8ebd9c05454bb38f13e5904eeabc4
+- Commit: 99face6879f8ff173a5dee635d0918d10e21d40c
 -->
 
 # 技能目录
@@ -49,18 +49,10 @@ Source English Markdown:
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
-| `matlab-analyze-data` | 使用表、时间表、数值数组和网格数据在 MATLAB 中分析数据 — 筛选、聚合、平滑、清洗和时间序列操作。 |
+| `matlab-analyze-data` | 使用表、时间表、数值数组和网格数据在 MATLAB 中分析数据：筛选、聚合、平滑、清洗和时间序列操作。 |
 | `matlab-choose-big-data-solution` | 选择正确的 MATLAB 工具来处理可能无法放入内存的大型表格数据。 |
 | `matlab-import-export-data` | 以跨工具保真度导入和导出表格、结构化和二进制数据。 |
 | `matlab-secure-credentials` | 使用 MATLAB 内置保管库在 MATLAB 中安全地存储、检索和传递凭据。 |
-
-### MATLAB 环境和设置 ([`matlab-environment-and-settings`](../../skills-catalog/matlab-environment-and-settings/))
-
-比较不同版本之间的 MATLAB 设置差异，并将启动脚本迁移到正确的设置路径
-
-| 技能 | 教给智能体的内容 |
-|-------|---------------------------|
-| `matlab-migrate-settings` | 比较不同版本之间的 MATLAB 设置，并更新以编程方式配置 MATLAB 设置的 MATLAB 代码文件 (.m)，以使用目标版本的正确设置路径。 |
 
 ### MATLAB 外部语言接口 ([`matlab-external-language-interfaces`](../../skills-catalog/matlab-external-language-interfaces/))
 
@@ -81,23 +73,25 @@ Source English Markdown:
 
 ### MATLAB 软件开发 ([`matlab-software-development`](../../skills-catalog/matlab-software-development/))
 
-编写和运行测试、现代化遗留代码、优化性能和内存、编写文档和创建工具箱、创建工程和制定构建计划
+编写和运行测试、现代化遗留代码、优化性能和内存、编写文档和创建工具箱、创建工程、管理包和制定构建计划
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
+| `matlab-configure-toml-project` | 创建和编辑 matlab.toml 工程文件：文件夹、依赖项、标签、导出配置文件、生命周期脚本和 MATLAB 包元数据。 |
 | `matlab-instrument-opentelemetry-tracing` | 使用正确的上下文传播和生命周期向 MATLAB 函数添加 OpenTelemetry 追踪 span。 |
 | `matlab-modernize-code` | 现代化已移除或不建议使用的 MATLAB 函数和模式。 |
 | `matlab-optimize-memory` | 使用结构化的测量-分析-优化-验证工作流查找并修复 MATLAB 代码中的内存瓶颈。 |
 | `matlab-optimize-performance` | 优化 MATLAB 代码的性能。 |
 | `matlab-package-toolbox` | 将 MATLAB 代码打包为可安装的 .mltbx 工具箱。 |
 | `matlab-run-tests` | 运行 MATLAB 测试套件、收集代码覆盖率并配置 CI/CD 流水线。 |
+| `matlab-use-package-manager` | 使用产品内置的 MATLAB Package Manager (mpm) 管理和检查 MATLAB 包。 |
 | `matlab-write-help` | 按照 MathWorks 文档标准生成或改进 MATLAB 帮助文本。 |
 | `matlab-write-performance-tests` | 使用 matlab.perftest.TestCase 框架编写 MATLAB 性能测试。 |
 | `matlab-write-tests` | 使用基于类的测试框架生成和组织 MATLAB 单元测试。 |
 
 ### 航空航天 ([`aerospace`](../../skills-catalog/aerospace/))
 
-支持 MATLAB 和 Aerospace Toolbox&trade;
+支持 Aerospace Toolbox&trade;
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -106,7 +100,7 @@ Source English Markdown:
 
 ### AI 和统计 ([`ai-and-statistics`](../../skills-catalog/ai-and-statistics/))
 
-支持 MATLAB、Simulink、Curve Fitting Toolbox&trade;、Deep Learning Toolbox&trade;、Embedded Coder&trade;、Fixed-Point Designer&trade;、MATLAB Coder&trade;、MATLAB Compiler SDK&trade;、MATLAB Report Generator&trade;、Optimization Toolbox&trade;、Parallel Computing Toolbox&trade;、Statistics and Machine Learning Toolbox&trade;、Deep Learning Toolbox Converter for ONNX Model Format&trade;、Deep Learning Toolbox Converter for PyTorch Models&trade; 和 Deep Learning Toolbox Converter for TensorFlow Models&trade;
+支持 Curve Fitting Toolbox&trade;、Deep Learning Toolbox&trade;、Embedded Coder&trade;、Fixed-Point Designer&trade;、MATLAB Coder&trade;、MATLAB Compiler SDK&trade;、MATLAB Report Generator&trade;、Optimization Toolbox&trade;、Parallel Computing Toolbox&trade;、Statistics and Machine Learning Toolbox&trade;、Deep Learning Toolbox Converter for ONNX Model Format&trade;、Deep Learning Toolbox Converter for PyTorch Models&trade; 和 Deep Learning Toolbox Converter for TensorFlow Models&trade;
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -123,7 +117,7 @@ Source English Markdown:
 
 ### 汽车 ([`automotive`](../../skills-catalog/automotive/))
 
-支持 MATLAB、Simulink、Automated Driving Toolbox&trade;、Computer Vision Toolbox&trade;、RoadRunner、RoadRunner Scenario、RoadRunner Scene Builder、Sensor Fusion and Tracking Toolbox&trade;、Automated Driving Toolbox Interface for Eclipse SUMO Traffic Simulator&trade; 和 Scenario Builder for Automated Driving Toolbox&trade;
+支持 Automated Driving Toolbox&trade;、Computer Vision Toolbox&trade;、RoadRunner、RoadRunner Scenario、RoadRunner Scene Builder、Sensor Fusion and Tracking Toolbox&trade;、Automated Driving Toolbox Interface for Eclipse SUMO Traffic Simulator&trade; 和 Scenario Builder for Automated Driving Toolbox&trade;
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -142,7 +136,7 @@ Source English Markdown:
 
 ### 云解决方案 ([`cloud-solutions`](../../skills-catalog/cloud-solutions/))
 
-支持 MATLAB 和 MATLAB Drive&trade;
+支持 MATLAB Drive&trade;
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -150,7 +144,7 @@ Source English Markdown:
 
 ### 代码生成 ([`code-generation`](../../skills-catalog/code-generation/))
 
-支持 MATLAB、Embedded Coder、Fixed-Point Designer、GPU Coder&trade;、MATLAB Coder、MATLAB Test&trade;、Parallel Computing Toolbox 和 MATLAB Coder Support Package for PyTorch and LiteRT Models&trade;
+支持 Embedded Coder、Fixed-Point Designer、GPU Coder&trade;、MATLAB Coder、MATLAB Test&trade;、Parallel Computing Toolbox 和 MATLAB Coder Support Package for PyTorch and LiteRT Models&trade;
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -162,7 +156,7 @@ Source English Markdown:
 
 ### 计算生物学 ([`computational-biology`](../../skills-catalog/computational-biology/))
 
-支持 MATLAB、SimBiology&trade; 和 Statistics and Machine Learning Toolbox
+支持 SimBiology&trade; 和 Statistics and Machine Learning Toolbox
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -172,7 +166,7 @@ Source English Markdown:
 
 ### 计算金融 ([`computational-finance`](../../skills-catalog/computational-finance/))
 
-支持 MATLAB、Datafeed Toolbox&trade;、Financial Instruments Toolbox&trade;、Financial Toolbox&trade; 和 Spreadsheet Link&trade;
+支持 Datafeed Toolbox&trade;、Financial Instruments Toolbox&trade;、Financial Toolbox&trade; 和 Spreadsheet Link&trade;
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -183,7 +177,7 @@ Source English Markdown:
 
 ### 控制系统 ([`control-systems`](../../skills-catalog/control-systems/))
 
-支持 MATLAB、Control System Toolbox&trade;、Predictive Maintenance Toolbox&trade;、Signal Processing Toolbox&trade;、Statistics and Machine Learning Toolbox 和 System Identification Toolbox&trade;
+支持 Control System Toolbox&trade;、Predictive Maintenance Toolbox&trade;、Signal Processing Toolbox&trade;、Statistics and Machine Learning Toolbox 和 System Identification Toolbox&trade;
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -193,7 +187,7 @@ Source English Markdown:
 
 ### 图像处理和计算机视觉 ([`image-processing-and-computer-vision`](../../skills-catalog/image-processing-and-computer-vision/))
 
-支持 MATLAB、Computer Vision Toolbox、Deep Learning Toolbox、Image Processing Toolbox&trade;、Lidar Toolbox&trade;、Medical Imaging Toolbox&trade; 和 Optical Design and Simulation Library for Image Processing Toolbox&trade;
+支持 Computer Vision Toolbox、Deep Learning Toolbox、Image Processing Toolbox&trade;、Lidar Toolbox&trade;、Medical Imaging Toolbox&trade;、Optical Design and Simulation Library for Image Processing Toolbox&trade; 和 Visual Inspection Toolbox&trade;
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -208,11 +202,11 @@ Source English Markdown:
 | `matlab-read-write-point-cloud-file` | 以 PLY、PCD、LAS/LAZ、PCAP、E57 和 IDC 格式读写 3D 点云数据。 |
 | `matlab-recognize-text` | 使用 ocr() 函数在 MATLAB 中构建 OCR 流水线。 |
 | `matlab-register-point-clouds` | 使用 ICP、NDT、LOAM、FGR、相位相关和 CPD 算法对齐和配准 3D 点云。 |
-| `matlab-use-visual-inspection` | 使用 Visual Inspection Toolbox&trade; 构建机器视觉检测系统。 |
+| `matlab-use-visual-inspection` | 使用 Visual Inspection Toolbox 构建机器视觉检测系统。 |
 
 ### 数学和优化 ([`math-and-optimization`](../../skills-catalog/math-and-optimization/))
 
-支持 MATLAB、Optimization Toolbox、Partial Differential Equation Toolbox&trade; 和 Symbolic Math Toolbox&trade;
+支持 Optimization Toolbox、Partial Differential Equation Toolbox&trade; 和 Symbolic Math Toolbox&trade;
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -222,7 +216,7 @@ Source English Markdown:
 
 ### 并行计算 ([`parallel-computing`](../../skills-catalog/parallel-computing/))
 
-支持 MATLAB、Parallel Computing Toolbox 和 MATLAB Parallel Server&trade;
+支持 Parallel Computing Toolbox 和 MATLAB Parallel Server&trade;
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -234,7 +228,7 @@ Source English Markdown:
 
 ### 雷达 ([`radar`](../../skills-catalog/radar/))
 
-支持 MATLAB、Mapping Toolbox&trade;、Phased Array System Toolbox&trade;、Radar Toolbox&trade;、Sensor Fusion and Tracking Toolbox 和 Signal Processing Toolbox
+支持 Mapping Toolbox&trade;、Phased Array System Toolbox&trade;、Radar Toolbox&trade;、Sensor Fusion and Tracking Toolbox 和 Signal Processing Toolbox
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -245,7 +239,7 @@ Source English Markdown:
 
 ### 报告和数据库访问 ([`reporting-and-database-access`](../../skills-catalog/reporting-and-database-access/))
 
-支持 MATLAB、Database Toolbox&trade;、MATLAB Report Generator、Parallel Computing Toolbox 和 Simulink Report Generator&trade;
+支持 Database Toolbox&trade;、MATLAB Report Generator、Parallel Computing Toolbox 和 Simulink Report Generator&trade;
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -256,7 +250,7 @@ Source English Markdown:
 
 ### 射频和混合信号 ([`rf-and-mixed-signal`](../../skills-catalog/rf-and-mixed-signal/))
 
-支持 MATLAB、Simulink、Antenna Toolbox&trade;、Mixed-Signal Blockset&trade;、RF Blockset&trade;、RF PCB Toolbox&trade;、RF Toolbox&trade;、SerDes Toolbox&trade;、Signal Integrity Toolbox、Signal Processing Toolbox 和 Statistics and Machine Learning Toolbox
+支持 Antenna Toolbox&trade;、Mixed-Signal Blockset&trade;、RF Blockset&trade;、RF PCB Toolbox&trade;、RF Toolbox&trade;、SerDes Toolbox&trade;、Signal Integrity Toolbox、Signal Processing Toolbox 和 Statistics and Machine Learning Toolbox
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -276,7 +270,7 @@ Source English Markdown:
 | `matlab-manage-pcb-material` | 定义 RF PCB 仿真的介质基板、金属导体、多层叠层和损耗模型。 |
 | `matlab-model-ams-systems` | 使用 Mixed-Signal Blockset 从 IC 数据表或系统规格建模 PLL 频率合成器。提取参数、选择架构、组装 Simulink 模型、设计环路滤波器、验证相位噪声。 |
 | `matlab-model-rf` | 使用 RF Toolbox 和 RF Blockset 在 MATLAB 中设计、分析和仿真 RF 系统 -- 从 S 参数 I/O 到完整的 Circuit Envelope 时域仿真。 |
-| `matlab-model-serdes-systems` | 使用 MATLAB SerDes Toolbox 建模、仿真和优化串行器/解串器 (SerDes) 系统 — 串行和并行链路。 |
+| `matlab-model-serdes-systems` | 使用 MATLAB SerDes Toolbox 建模、仿真和优化串行器/解串器 (SerDes) 系统 (串行和并行链路)。 |
 | `matlab-model-via` | 为高速 PCB 层间过渡建模包含焊盘、反焊盘和接地回流过孔的过孔。 |
 | `matlab-optimize-pcb-design` | 使用 patternsearch 和 surrogateopt 优化 RF PCB 组件尺寸以满足带宽、回波损耗或面积要求。 |
 | `matlab-read-pcb-layout` | 导入 Gerber、ODB++ 和 Allegro .brd 文件并检查网络、层、形状和叠层。 |
@@ -284,7 +278,7 @@ Source English Markdown:
 
 ### 机器人和自主系统 ([`robotics-and-autonomous-systems`](../../skills-catalog/robotics-and-autonomous-systems/))
 
-支持 MATLAB、Navigation Toolbox&trade;、UAV Toolbox&trade; 和 Robotics System Toolbox&trade;
+支持 Navigation Toolbox&trade;、UAV Toolbox&trade; 和 Robotics System Toolbox&trade;
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -297,7 +291,7 @@ Source English Markdown:
 
 ### 信号处理 ([`signal-processing`](../../skills-catalog/signal-processing/))
 
-支持 MATLAB、Simulink、Audio Toolbox&trade;、DSP HDL Toolbox&trade;、DSP System Toolbox&trade;、Fixed-Point Designer、HDL Coder&trade;、Signal Processing Toolbox 和 Wavelet Toolbox&trade;
+支持 Audio Toolbox&trade;、DSP HDL Toolbox&trade;、DSP System Toolbox&trade;、Fixed-Point Designer、HDL Coder&trade;、Signal Processing Toolbox 和 Wavelet Toolbox&trade;
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -316,7 +310,7 @@ Source English Markdown:
 
 ### 测试和测量 ([`test-and-measurement`](../../skills-catalog/test-and-measurement/))
 
-支持 MATLAB、Data Acquisition Toolbox&trade;、Image Acquisition Toolbox&trade;、Image Processing Toolbox、Industrial Communication Toolbox&trade;、Vehicle Network Toolbox&trade; 和 MATLAB Support Package for Arduino Hardware&trade;
+支持 Data Acquisition Toolbox&trade;、Image Acquisition Toolbox&trade;、Image Processing Toolbox、Industrial Communication Toolbox&trade;、Vehicle Network Toolbox&trade; 和 MATLAB Support Package for Arduino Hardware&trade;
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -336,7 +330,7 @@ Source English Markdown:
 
 ### 无线通信 ([`wireless-communications`](../../skills-catalog/wireless-communications/))
 
-支持 MATLAB、5G Toolbox&trade;、Bluetooth&reg; Toolbox&trade;、Communications Toolbox&trade;、Satellite Communications Toolbox&trade;、Wireless Network Toolbox&trade;、Wireless Testbench&trade;、WLAN Toolbox&trade; 和 Wireless Testbench Support Package for NI USRP Radios&trade;
+支持 5G Toolbox&trade;、Bluetooth&reg; Toolbox&trade;、Communications Toolbox&trade;、Satellite Communications Toolbox&trade;、Wireless Network Toolbox&trade;、Wireless Testbench&trade;、WLAN Toolbox&trade; 和 Wireless Testbench Support Package for NI USRP Radios&trade;
 
 | 技能 | 教给智能体的内容 |
 |-------|---------------------------|
@@ -356,7 +350,7 @@ Source English Markdown:
 
 ## 技能的安装方式
 
-有关这些技能安装方式的详细信息，请参阅[安装 MATLAB Agentic Toolkit](../README.zh-cn.md#安装-matlab-agentic-toolkit)
+有关这些技能安装方式的详细信息，请参阅[开始使用 MATLAB Agentic Toolkit](../README.zh-cn.md#开始使用-matlab-agentic-toolkit)。
 
 ----
 
