@@ -2,7 +2,7 @@
 Source English Markdown:
 - File: ./README.md
 - Branch: main
-- Commit: a8c3d13fe0c8ebd9c05454bb38f13e5904eeabc4
+- Commit: 99face6879f8ff173a5dee635d0918d10e21d40c
 -->
 
 # MATLAB Agentic Toolkit
@@ -24,10 +24,10 @@ MATLAB&reg; Agentic Toolkit 允许您通过为 AI 智能体提供高效使用 MA
 
 - 将您的 AI 智能体连接到 MATLAB。此工具包通过自动安装 [MATLAB MCP Server](https://github.com/matlab/matlab-mcp-server) 来实现此功能。然后，您可以使用智能体编写符合 MATLAB 惯例的代码、生成和运行测试、诊断错误、构建应用程序等。
 
-- 为您的智能体提供精选的专业知识（技能）。这些技能为您的智能体提供 MATLAB 工作流、约定和最佳实践方面的知识，同时最大限度地减少词元消耗。
+- 为您的智能体提供精选的专业知识 (技能)。这些技能为您的智能体提供 MATLAB 工作流、约定和最佳实践方面的知识，同时最大限度地减少词元消耗。
 
 > [!Note]
-> 如果仅将 AI 智能体用于 Simulink&reg;，请安装 [Simulink Agentic Toolkit](https://github.com/matlab/simulink-agentic-toolkit)。如需安装两个工具包，请使用 [Agentic Toolkit Installer](#安装-matlab-agentic-toolkit)。
+> 要将 AI 智能体高效地与 Simulink&reg; 配合使用，请安装 [Simulink Agentic Toolkit](https://github.com/matlab/simulink-agentic-toolkit)。在安装 MATLAB Agentic Toolkit 或 Simulink Agentic Toolkit 时，您都可以选择同时安装这两个工具包。
 
 
 ## 要求
@@ -47,11 +47,11 @@ MATLAB&reg; Agentic Toolkit 允许您通过为 AI 智能体提供高效使用 MA
 
 > 注意：有关从本地文件安装、在离线环境中安装、此工具包的配置设置选项、平台特定说明、验证步骤、故障排除以及不使用安装程序的手动设置的说明，请参阅[配置和故障排除](Configuration_and_Troubleshooting.zh-cn.md)。如果您已安装 MCP 服务器且只需要添加技能，请参阅[仅添加技能](Configuration_and_Troubleshooting.zh-cn.md#adding-skills-only)。
 
-### 安装 MATLAB Agentic Toolkit
+### 从 MATLAB 安装 MATLAB Agentic Toolkit
 
-按照以下步骤设置 MATLAB Agentic Toolkit。
+按照以下步骤在 MATLAB 中设置 MATLAB Agentic Toolkit。
 
-1. 要下载安装程序，请单击 [agenticToolkitInstaller.mltbx](https://github.com/matlab/simulink-agentic-toolkit/releases/latest/download/agenticToolkitInstaller.mltbx)。
+1. 要下载 Agentic Toolkit 安装程序包，请点击 [agenticToolkitInstaller.mltbx](https://github.com/matlab/simulink-agentic-toolkit/releases/latest/download/agenticToolkitInstaller.mltbx)。
 2. 使用 MATLAB 打开下载的文件以安装安装程序附加功能。
 3. 在 MATLAB 中运行以下命令。
 
@@ -69,6 +69,10 @@ shareMATLABSession()
 如果您正在运行多个 MATLAB 会话，智能体将连接到您最近运行此命令的 MATLAB 会话。
 
 或者，您也可以将此命令添加到 MATLAB [启动脚本](https://www.mathworks.com/help/matlab/ref/startup.html)中。
+
+### 从命令行安装 MATLAB Agentic Toolkit
+
+如果您使用的是 Claude Code 或 OpenAI Codex，也可以使用 Agentic Toolkit Installer 在操作系统命令行中同时设置 MATLAB Agentic Toolkit、Simulink Agentic Toolkit 和 MATLAB MCP Server。有关详细信息，请参阅 [Agentic Toolkit Installer](https://github.com/matlab/agentic-toolkit-installer)。
 
 
 ### 验证
@@ -89,10 +93,10 @@ shareMATLABSession()
 | 使用代码分析器进行静态代码分析 | `check_matlab_code` |
 | 列出已安装的 MATLAB 版本和工具箱 | `detect_matlab_toolboxes` |
 
-服务器还提供两个 MCP 资源：`matlab_coding_guidelines`（编码标准）和 `plain_text_live_code_guidelines`（实时脚本格式规则）。这些资源提供了智能体可以按需读取的参考信息。
+服务器还提供两个 MCP 资源：`matlab_coding_guidelines` (编码标准) 和 `plain_text_live_code_guidelines` (实时脚本格式规则)。这些资源提供了智能体可以按需读取的参考信息。
 
 ### 使用智能体技能运行 MATLAB 工作流
-安装 MATLAB Agentic Toolkit 后，您的智能体可以使用 MathWorks&reg; 精选的技能。为获得最佳效果，请仅安装与您的工作相关的技能组，加载的技能越少，智能体触发技能就越可靠。您也可以按名称手动触发特定技能（例如，在 Claude Code 中使用 `/matlab-write-tests`）以确保其加载。要阅读所有技能的详细信息，请参阅[技能目录](skills-catalog/README.zh-cn.md)。技能组包括：
+安装 MATLAB Agentic Toolkit 后，您的智能体可以使用 MathWorks&reg; 精选的技能。为获得最佳效果，请仅安装与您的工作相关的技能组，加载的技能越少，智能体触发技能就越可靠。您也可以按名称手动触发特定技能 (例如，在 Claude Code 中使用 `/matlab-write-tests`) 以确保其加载。要阅读所有技能的详细信息，请参阅[技能目录](skills-catalog/README.zh-cn.md)。技能组包括：
 
 <!-- BEGIN SKILLS -->
 #### MATLAB 技能
@@ -102,38 +106,37 @@ shareMATLABSession()
 | [**MATLAB 核心**](skills-catalog/README.zh-cn.md#matlab-核心-matlab-core) | 创建、调试、审查和管理 MATLAB 代码及安装 |
 | [**MATLAB App 构建**](skills-catalog/README.zh-cn.md#matlab-app-构建-matlab-app-building) | 使用 UI 组件、布局、回调和 Web 集成以编程方式构建 MATLAB 应用程序 |
 | [**MATLAB 数据导入和分析**](skills-catalog/README.zh-cn.md#matlab-数据导入和分析-matlab-data-import-and-analysis) | 使用表、timetable、筛选、聚合和时间序列操作在 MATLAB 中导入、导出和分析数据 |
-| [**MATLAB 环境和设置**](skills-catalog/README.zh-cn.md#matlab-环境和设置-matlab-environment-and-settings) | 比较不同版本之间的 MATLAB 设置差异，并将启动脚本迁移到正确的设置路径 |
 | [**MATLAB 外部语言接口**](skills-catalog/README.zh-cn.md#matlab-外部语言接口-matlab-external-language-interfaces) | 从 MATLAB 调用 Python&reg; 库并将 MEX 文件升级到 interleaved complex API |
 | [**MATLAB 编程**](skills-catalog/README.zh-cn.md#matlab-编程-matlab-programming) | 编写具有经过验证的输入的稳健 MATLAB 函数 |
-| [**MATLAB 软件开发**](skills-catalog/README.zh-cn.md#matlab-软件开发-matlab-software-development) | 编写和运行测试、现代化遗留代码、优化性能和内存、编写文档和创建工具箱、创建工程和制定构建计划 |
+| [**MATLAB 软件开发**](skills-catalog/README.zh-cn.md#matlab-软件开发-matlab-software-development) | 编写和运行测试、现代化遗留代码、优化性能和内存、编写文档和创建工具箱、创建工程、管理包和制定构建计划 |
 
 #### 工具箱技能
 
 | 技能组 | 支持的产品 |
 |-------------|--------------------|
-| [**航空航天**](skills-catalog/README.zh-cn.md#航空航天-aerospace) | MATLAB 和 Aerospace Toolbox&trade; |
-| [**AI 和统计**](skills-catalog/README.zh-cn.md#ai-和统计-ai-and-statistics) | MATLAB、Simulink、Curve Fitting Toolbox&trade;、Deep Learning Toolbox&trade;、Embedded Coder&trade;、Fixed-Point Designer&trade;、MATLAB Coder&trade;、MATLAB Compiler SDK&trade;、MATLAB Report Generator&trade;、Optimization Toolbox&trade;、Parallel Computing Toolbox&trade;、Statistics and Machine Learning Toolbox&trade;、Deep Learning Toolbox Converter for ONNX Model Format&trade;、Deep Learning Toolbox Converter for PyTorch Models&trade; 和 Deep Learning Toolbox Converter for TensorFlow Models&trade; |
-| [**汽车**](skills-catalog/README.zh-cn.md#汽车-automotive) | MATLAB、Simulink、Automated Driving Toolbox&trade;、Computer Vision Toolbox&trade;、RoadRunner、RoadRunner Scenario、RoadRunner Scene Builder、Sensor Fusion and Tracking Toolbox&trade;、Automated Driving Toolbox Interface for Eclipse SUMO Traffic Simulator&trade; 和 Scenario Builder for Automated Driving Toolbox&trade; |
-| [**云解决方案**](skills-catalog/README.zh-cn.md#云解决方案-cloud-solutions) | MATLAB 和 MATLAB Drive&trade; |
-| [**代码生成**](skills-catalog/README.zh-cn.md#代码生成-code-generation) | MATLAB、Embedded Coder、Fixed-Point Designer、GPU Coder&trade;、MATLAB Coder、MATLAB Test&trade;、Parallel Computing Toolbox 和 MATLAB Coder Support Package for PyTorch and LiteRT Models&trade; |
-| [**计算生物学**](skills-catalog/README.zh-cn.md#计算生物学-computational-biology) | MATLAB、SimBiology&trade; 和 Statistics and Machine Learning Toolbox |
-| [**计算金融**](skills-catalog/README.zh-cn.md#计算金融-computational-finance) | MATLAB、Datafeed Toolbox&trade;、Financial Instruments Toolbox&trade;、Financial Toolbox&trade; 和 Spreadsheet Link&trade; |
-| [**控制系统**](skills-catalog/README.zh-cn.md#控制系统-control-systems) | MATLAB、Control System Toolbox&trade;、Predictive Maintenance Toolbox&trade;、Signal Processing Toolbox&trade;、Statistics and Machine Learning Toolbox 和 System Identification Toolbox&trade; |
-| [**图像处理和计算机视觉**](skills-catalog/README.zh-cn.md#图像处理和计算机视觉-image-processing-and-computer-vision) | MATLAB、Computer Vision Toolbox、Deep Learning Toolbox、Image Processing Toolbox&trade;、Lidar Toolbox&trade;、Medical Imaging Toolbox&trade; 和 Optical Design and Simulation Library for Image Processing Toolbox&trade; |
-| [**数学和优化**](skills-catalog/README.zh-cn.md#数学和优化-math-and-optimization) | MATLAB、Optimization Toolbox、Partial Differential Equation Toolbox&trade; 和 Symbolic Math Toolbox&trade; |
-| [**并行计算**](skills-catalog/README.zh-cn.md#并行计算-parallel-computing) | MATLAB、Parallel Computing Toolbox 和 MATLAB Parallel Server&trade; |
-| [**雷达**](skills-catalog/README.zh-cn.md#雷达-radar) | MATLAB、Mapping Toolbox&trade;、Phased Array System Toolbox&trade;、Radar Toolbox&trade;、Sensor Fusion and Tracking Toolbox 和 Signal Processing Toolbox |
-| [**报告和数据库访问**](skills-catalog/README.zh-cn.md#报告和数据库访问-reporting-and-database-access) | MATLAB、Database Toolbox&trade;、MATLAB Report Generator、Parallel Computing Toolbox 和 Simulink Report Generator&trade; |
-| [**射频和混合信号**](skills-catalog/README.zh-cn.md#射频和混合信号-rf-and-mixed-signal) | MATLAB、Simulink、Antenna Toolbox&trade;、Mixed-Signal Blockset&trade;、RF Blockset&trade;、RF PCB Toolbox&trade;、RF Toolbox&trade;、SerDes Toolbox&trade;、Signal Integrity Toolbox、Signal Processing Toolbox 和 Statistics and Machine Learning Toolbox |
-| [**机器人和自主系统**](skills-catalog/README.zh-cn.md#机器人和自主系统-robotics-and-autonomous-systems) | MATLAB、Navigation Toolbox&trade;、UAV Toolbox&trade; 和 Robotics System Toolbox&trade; |
-| [**信号处理**](skills-catalog/README.zh-cn.md#信号处理-signal-processing) | MATLAB、Simulink、Audio Toolbox&trade;、DSP HDL Toolbox&trade;、DSP System Toolbox&trade;、Fixed-Point Designer、HDL Coder&trade;、Signal Processing Toolbox 和 Wavelet Toolbox&trade; |
-| [**测试和测量**](skills-catalog/README.zh-cn.md#测试和测量-test-and-measurement) | MATLAB、Data Acquisition Toolbox&trade;、Image Acquisition Toolbox&trade;、Image Processing Toolbox、Industrial Communication Toolbox&trade;、Vehicle Network Toolbox&trade; 和 MATLAB Support Package for Arduino Hardware&trade; |
-| [**无线通信**](skills-catalog/README.zh-cn.md#无线通信-wireless-communications) | MATLAB、5G Toolbox&trade;、Bluetooth&reg; Toolbox&trade;、Communications Toolbox&trade;、Satellite Communications Toolbox&trade;、Wireless Network Toolbox&trade;、Wireless Testbench&trade;、WLAN Toolbox&trade; 和 Wireless Testbench Support Package for NI USRP Radios&trade; |
+| [**航空航天**](skills-catalog/README.zh-cn.md#航空航天-aerospace) | Aerospace Toolbox&trade; |
+| [**AI 和统计**](skills-catalog/README.zh-cn.md#ai-和统计-ai-and-statistics) | Curve Fitting Toolbox&trade;、Deep Learning Toolbox&trade;、Embedded Coder&trade;、Fixed-Point Designer&trade;、MATLAB Coder&trade;、MATLAB Compiler SDK&trade;、MATLAB Report Generator&trade;、Optimization Toolbox&trade;、Parallel Computing Toolbox&trade;、Statistics and Machine Learning Toolbox&trade;、Deep Learning Toolbox Converter for ONNX Model Format&trade;、Deep Learning Toolbox Converter for PyTorch Models&trade; 和 Deep Learning Toolbox Converter for TensorFlow Models&trade; |
+| [**汽车**](skills-catalog/README.zh-cn.md#汽车-automotive) | Automated Driving Toolbox&trade;、Computer Vision Toolbox&trade;、RoadRunner、RoadRunner Scenario、RoadRunner Scene Builder、Sensor Fusion and Tracking Toolbox&trade;、Automated Driving Toolbox Interface for Eclipse SUMO Traffic Simulator&trade; 和 Scenario Builder for Automated Driving Toolbox&trade; |
+| [**云解决方案**](skills-catalog/README.zh-cn.md#云解决方案-cloud-solutions) | MATLAB Drive&trade; |
+| [**代码生成**](skills-catalog/README.zh-cn.md#代码生成-code-generation) | Embedded Coder、Fixed-Point Designer、GPU Coder&trade;、MATLAB Coder、MATLAB Test&trade;、Parallel Computing Toolbox 和 MATLAB Coder Support Package for PyTorch and LiteRT Models&trade; |
+| [**计算生物学**](skills-catalog/README.zh-cn.md#计算生物学-computational-biology) | SimBiology&trade; 和 Statistics and Machine Learning Toolbox |
+| [**计算金融**](skills-catalog/README.zh-cn.md#计算金融-computational-finance) | Datafeed Toolbox&trade;、Financial Instruments Toolbox&trade;、Financial Toolbox&trade; 和 Spreadsheet Link&trade; |
+| [**控制系统**](skills-catalog/README.zh-cn.md#控制系统-control-systems) | Control System Toolbox&trade;、Predictive Maintenance Toolbox&trade;、Signal Processing Toolbox&trade;、Statistics and Machine Learning Toolbox 和 System Identification Toolbox&trade; |
+| [**图像处理和计算机视觉**](skills-catalog/README.zh-cn.md#图像处理和计算机视觉-image-processing-and-computer-vision) | Computer Vision Toolbox、Deep Learning Toolbox、Image Processing Toolbox&trade;、Lidar Toolbox&trade;、Medical Imaging Toolbox&trade;、Optical Design and Simulation Library for Image Processing Toolbox&trade; 和 Visual Inspection Toolbox&trade; |
+| [**数学和优化**](skills-catalog/README.zh-cn.md#数学和优化-math-and-optimization) | Optimization Toolbox、Partial Differential Equation Toolbox&trade; 和 Symbolic Math Toolbox&trade; |
+| [**并行计算**](skills-catalog/README.zh-cn.md#并行计算-parallel-computing) | Parallel Computing Toolbox 和 MATLAB Parallel Server&trade; |
+| [**雷达**](skills-catalog/README.zh-cn.md#雷达-radar) | Mapping Toolbox&trade;、Phased Array System Toolbox&trade;、Radar Toolbox&trade;、Sensor Fusion and Tracking Toolbox 和 Signal Processing Toolbox |
+| [**报告和数据库访问**](skills-catalog/README.zh-cn.md#报告和数据库访问-reporting-and-database-access) | Database Toolbox&trade;、MATLAB Report Generator、Parallel Computing Toolbox 和 Simulink Report Generator&trade; |
+| [**射频和混合信号**](skills-catalog/README.zh-cn.md#射频和混合信号-rf-and-mixed-signal) | Antenna Toolbox&trade;、Mixed-Signal Blockset&trade;、RF Blockset&trade;、RF PCB Toolbox&trade;、RF Toolbox&trade;、SerDes Toolbox&trade;、Signal Integrity Toolbox、Signal Processing Toolbox 和 Statistics and Machine Learning Toolbox |
+| [**机器人和自主系统**](skills-catalog/README.zh-cn.md#机器人和自主系统-robotics-and-autonomous-systems) | Navigation Toolbox&trade;、UAV Toolbox&trade; 和 Robotics System Toolbox&trade; |
+| [**信号处理**](skills-catalog/README.zh-cn.md#信号处理-signal-processing) | Audio Toolbox&trade;、DSP HDL Toolbox&trade;、DSP System Toolbox&trade;、Fixed-Point Designer、HDL Coder&trade;、Signal Processing Toolbox 和 Wavelet Toolbox&trade; |
+| [**测试和测量**](skills-catalog/README.zh-cn.md#测试和测量-test-and-measurement) | Data Acquisition Toolbox&trade;、Image Acquisition Toolbox&trade;、Image Processing Toolbox、Industrial Communication Toolbox&trade;、Vehicle Network Toolbox&trade; 和 MATLAB Support Package for Arduino Hardware&trade; |
+| [**无线通信**](skills-catalog/README.zh-cn.md#无线通信-wireless-communications) | 5G Toolbox&trade;、Bluetooth&reg; Toolbox&trade;、Communications Toolbox&trade;、Satellite Communications Toolbox&trade;、Wireless Network Toolbox&trade;、Wireless Testbench&trade;、WLAN Toolbox&trade; 和 Wireless Testbench Support Package for NI USRP Radios&trade; |
 <!-- END SKILLS -->
 ---
 ## 更新 MATLAB Agentic Toolkit
 
-要更新工具包，请单击 [agenticToolkitInstaller.mltbx](https://github.com/matlab/simulink-agentic-toolkit/releases/latest/download/agenticToolkitInstaller.mltbx) 下载最新的安装程序附加功能。使用 MATLAB 打开下载的文件，然后在 MATLAB 中运行以下命令。
+要更新工具包，请点击 [agenticToolkitInstaller.mltbx](https://github.com/matlab/simulink-agentic-toolkit/releases/latest/download/agenticToolkitInstaller.mltbx) 下载最新的安装程序附加功能。使用 MATLAB 打开下载的文件，然后在 MATLAB 中运行以下命令。
 
 ```matlab
 setupAgenticToolkit("update")

@@ -2,7 +2,7 @@
 Source English Markdown:
 - File: ./Configuration_and_Troubleshooting.md
 - Branch: main
-- Commit: 645cf259dedf8b012f89fdb7006ad7c1afa33e3e
+- Commit: 36431d841616bc7bcc461fe0413e822e557f5c32
 -->
 
 # 配置和故障排除
@@ -37,7 +37,7 @@ Source English Markdown:
 |----------|----------------|
 | MCP 服务器二进制文件 | [MATLAB MCP Server latest release](https://github.com/matlab/matlab-mcp-server/releases/latest) — 下载适用于您平台的二进制文件 (例如 `matlab-mcp-server-macos-arm64`、`matlab-mcp-server-windows-x64.exe`)。 |
 | MCP 服务器工具箱 | [MATLAB MCP Server latest release](https://github.com/matlab/matlab-mcp-server/releases/latest) — 下载 `MATLABMCPServerToolbox.mltbx`。 |
-| Agentic Toolkit 安装程序 | [Simulink Agentic Toolkit latest release](https://github.com/matlab/simulink-agentic-toolkit/releases/latest) — 下载 `agenticToolkitInstaller.mltbx`。 |
+| Agentic Toolkit 安装程序包 | [Simulink Agentic Toolkit latest release](https://github.com/matlab/simulink-agentic-toolkit/releases/latest) — 下载 `agenticToolkitInstaller.mltbx`。 |
 | MATLAB Agentic Toolkit | 从 [GitHub](https://github.com/matlab/matlab-agentic-toolkit) 克隆或下载。 |
 | Simulink Agentic Toolkit | 从 [GitHub](https://github.com/matlab/simulink-agentic-toolkit) 克隆或下载。仅在安装 Simulink Agentic Toolkit 时才需要。|
 
@@ -68,7 +68,7 @@ setupAgenticToolkit("install", Offline=true,  ...
 1) 按照[仅添加技能](#adding-skills-only)中的步骤安装 MATLAB Agentic Toolkit 技能。
 2) 让智能体使用 `matlab-install-products` 技能安装 MATLAB。
 
-安装 MATLAB 后，您可以通过按照 [Agentic Toolkit 安装程序](README.zh-cn.md#安装-matlab-agentic-toolkit)中的说明自动安装 MATLAB MCP Server，或者通过手动安装和配置 MATLAB MCP Server 来完成 MATLAB Agentic Toolkit 设置。
+安装 MATLAB 后，您可以通过按照 [开始使用 MATLAB Agentic Toolkit](README.zh-cn.md#开始使用-matlab-agentic-toolkit)中的说明自动安装 MATLAB MCP Server，或者通过手动安装和配置 MATLAB MCP Server 来完成 MATLAB Agentic Toolkit 设置。
 
 ---
 

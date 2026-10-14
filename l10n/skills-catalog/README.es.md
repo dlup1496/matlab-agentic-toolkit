@@ -2,7 +2,7 @@
 Source English Markdown:
 - File: ./skills-catalog/README.md
 - Branch: main
-- Commit: a8c3d13fe0c8ebd9c05454bb38f13e5904eeabc4
+- Commit: 99face6879f8ff173a5dee635d0918d10e21d40c
 -->
 
 # Catálogo de Skills
@@ -54,14 +54,6 @@ Importar, exportar y analizar datos en MATLAB usando tablas, horarios, filtrado,
 | `matlab-import-export-data` | Importar y exportar datos tabulares, estructurados y binarios con fidelidad entre herramientas. |
 | `matlab-secure-credentials` | Almacenar, recuperar y pasar credenciales de forma segura en MATLAB usando el vault integrado de MATLAB. |
 
-### MATLAB Environment and Settings ([`matlab-environment-and-settings`](../../skills-catalog/matlab-environment-and-settings/))
-
-Comparar ajustes de MATLAB entre versiones y migrar scripts de inicio a rutas de ajustes correctas
-
-| Skill | Qué le enseña a su agente |
-|-------|---------------------------|
-| `matlab-migrate-settings` | Comparar ajustes de MATLAB entre versiones y actualizar archivos de código de MATLAB (.m) que configuran programáticamente los ajustes de MATLAB para usar las rutas de ajustes correctas para la versión de destino. |
-
 ### MATLAB External Language Interfaces ([`matlab-external-language-interfaces`](../../skills-catalog/matlab-external-language-interfaces/))
 
 Invocar bibliotecas de Python&reg; desde MATLAB y actualizar archivos MEX a la API interleaved complex
@@ -81,23 +73,25 @@ Escribir funciones de MATLAB robustas con entradas validadas
 
 ### MATLAB Software Development ([`matlab-software-development`](../../skills-catalog/matlab-software-development/))
 
-Escribir y ejecutar pruebas, modernizar código heredado, optimizar rendimiento y memoria, documentar y crear toolboxes, crear proyectos y desarrollar planes de compilación
+Escribir y ejecutar pruebas, modernizar código heredado, optimizar rendimiento y memoria, documentar y crear toolboxes, crear proyectos, administrar paquetes y desarrollar planes de compilación
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
+| `matlab-configure-toml-project` | Crear y editar archivos de proyecto matlab.toml — carpetas, dependencias, etiquetas, perfiles de exportación, scripts de ciclo de vida y metadatos de paquetes de MATLAB. |
 | `matlab-instrument-opentelemetry-tracing` | Agregar spans de trazado OpenTelemetry a funciones de MATLAB con propagación de contexto y ciclo de vida correctos. |
 | `matlab-modernize-code` | Modernizar funciones y patrones eliminados o desaconsejados de MATLAB. |
 | `matlab-optimize-memory` | Encontrar y corregir cuellos de botella de memoria en código de MATLAB usando un flujo de trabajo estructurado de medición-perfilado-optimización-verificación. |
 | `matlab-optimize-performance` | Optimizar el rendimiento del código de MATLAB. |
 | `matlab-package-toolbox` | Empaquetar código de MATLAB como una toolbox instalable .mltbx. |
 | `matlab-run-tests` | Ejecutar suites de pruebas de MATLAB, recopilar cobertura de código y configurar pipelines CI/CD. |
+| `matlab-use-package-manager` | Administrar e inspeccionar paquetes de MATLAB con MATLAB Package Manager (mpm) integrado en el producto. |
 | `matlab-write-help` | Generar o mejorar texto de ayuda de MATLAB siguiendo los estándares de documentación de MathWorks. |
 | `matlab-write-performance-tests` | Escribir pruebas de rendimiento de MATLAB usando el framework matlab.perftest.TestCase. |
 | `matlab-write-tests` | Generar y estructurar pruebas unitarias de MATLAB usando frameworks de pruebas basados en clases. |
 
 ### Aerospace ([`aerospace`](../../skills-catalog/aerospace/))
 
-Soporte para MATLAB y Aerospace Toolbox&trade;
+Soporte para Aerospace Toolbox&trade;
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -106,7 +100,7 @@ Soporte para MATLAB y Aerospace Toolbox&trade;
 
 ### AI and Statistics ([`ai-and-statistics`](../../skills-catalog/ai-and-statistics/))
 
-Soporte para MATLAB, Simulink, Curve Fitting Toolbox&trade;, Deep Learning Toolbox&trade;, Embedded Coder&trade;, Fixed-Point Designer&trade;, MATLAB Coder&trade;, MATLAB Compiler SDK&trade;, MATLAB Report Generator&trade;, Optimization Toolbox&trade;, Parallel Computing Toolbox&trade;, Statistics and Machine Learning Toolbox&trade;, Deep Learning Toolbox Converter for ONNX Model Format&trade;, Deep Learning Toolbox Converter for PyTorch Models&trade; y Deep Learning Toolbox Converter for TensorFlow Models&trade;
+Soporte para Curve Fitting Toolbox&trade;, Deep Learning Toolbox&trade;, Embedded Coder&trade;, Fixed-Point Designer&trade;, MATLAB Coder&trade;, MATLAB Compiler SDK&trade;, MATLAB Report Generator&trade;, Optimization Toolbox&trade;, Parallel Computing Toolbox&trade;, Statistics and Machine Learning Toolbox&trade;, Deep Learning Toolbox Converter for ONNX Model Format&trade;, Deep Learning Toolbox Converter for PyTorch Models&trade; y Deep Learning Toolbox Converter for TensorFlow Models&trade;
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -123,7 +117,7 @@ Soporte para MATLAB, Simulink, Curve Fitting Toolbox&trade;, Deep Learning Toolb
 
 ### Automotive ([`automotive`](../../skills-catalog/automotive/))
 
-Soporte para MATLAB, Simulink, Automated Driving Toolbox&trade;, Computer Vision Toolbox&trade;, RoadRunner, RoadRunner Scenario, RoadRunner Scene Builder, Sensor Fusion and Tracking Toolbox&trade;, Automated Driving Toolbox Interface for Eclipse SUMO Traffic Simulator&trade; y Scenario Builder for Automated Driving Toolbox&trade;
+Soporte para Automated Driving Toolbox&trade;, Computer Vision Toolbox&trade;, RoadRunner, RoadRunner Scenario, RoadRunner Scene Builder, Sensor Fusion and Tracking Toolbox&trade;, Automated Driving Toolbox Interface for Eclipse SUMO Traffic Simulator&trade; y Scenario Builder for Automated Driving Toolbox&trade;
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -142,7 +136,7 @@ Soporte para MATLAB, Simulink, Automated Driving Toolbox&trade;, Computer Vision
 
 ### Cloud Solutions ([`cloud-solutions`](../../skills-catalog/cloud-solutions/))
 
-Soporte para MATLAB, MATLAB Drive&trade;
+Soporte para MATLAB Drive&trade;
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -150,7 +144,7 @@ Soporte para MATLAB, MATLAB Drive&trade;
 
 ### Code Generation ([`code-generation`](../../skills-catalog/code-generation/))
 
-Soporte para MATLAB, Embedded Coder, Fixed-Point Designer, GPU Coder&trade;, MATLAB Coder, MATLAB Test&trade;, Parallel Computing Toolbox y MATLAB Coder Support Package for PyTorch and LiteRT Models&trade;
+Soporte para Embedded Coder, Fixed-Point Designer, GPU Coder&trade;, MATLAB Coder, MATLAB Test&trade;, Parallel Computing Toolbox y MATLAB Coder Support Package for PyTorch and LiteRT Models&trade;
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -162,7 +156,7 @@ Soporte para MATLAB, Embedded Coder, Fixed-Point Designer, GPU Coder&trade;, MAT
 
 ### Computational Biology ([`computational-biology`](../../skills-catalog/computational-biology/))
 
-Soporte para MATLAB, SimBiology&trade; y Statistics and Machine Learning Toolbox
+Soporte para SimBiology&trade; y Statistics and Machine Learning Toolbox
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -172,7 +166,7 @@ Soporte para MATLAB, SimBiology&trade; y Statistics and Machine Learning Toolbox
 
 ### Computational Finance ([`computational-finance`](../../skills-catalog/computational-finance/))
 
-Soporte para MATLAB, Datafeed Toolbox&trade;, Financial Instruments Toolbox&trade;, Financial Toolbox&trade; y Spreadsheet Link&trade;
+Soporte para Datafeed Toolbox&trade;, Financial Instruments Toolbox&trade;, Financial Toolbox&trade; y Spreadsheet Link&trade;
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -183,7 +177,7 @@ Soporte para MATLAB, Datafeed Toolbox&trade;, Financial Instruments Toolbox&trad
 
 ### Control Systems ([`control-systems`](../../skills-catalog/control-systems/))
 
-Soporte para MATLAB, Control System Toolbox&trade;, Predictive Maintenance Toolbox&trade;, Signal Processing Toolbox&trade;, Statistics and Machine Learning Toolbox y System Identification Toolbox&trade;
+Soporte para Control System Toolbox&trade;, Predictive Maintenance Toolbox&trade;, Signal Processing Toolbox&trade;, Statistics and Machine Learning Toolbox y System Identification Toolbox&trade;
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -193,7 +187,7 @@ Soporte para MATLAB, Control System Toolbox&trade;, Predictive Maintenance Toolb
 
 ### Image Processing and Computer Vision ([`image-processing-and-computer-vision`](../../skills-catalog/image-processing-and-computer-vision/))
 
-Soporte para MATLAB, Computer Vision Toolbox, Deep Learning Toolbox, Image Processing Toolbox&trade;, Lidar Toolbox&trade;, Medical Imaging Toolbox&trade; y Optical Design and Simulation Library for Image Processing Toolbox&trade;
+Soporte para Computer Vision Toolbox, Deep Learning Toolbox, Image Processing Toolbox&trade;, Lidar Toolbox&trade;, Medical Imaging Toolbox&trade;, Optical Design and Simulation Library for Image Processing Toolbox&trade; y Visual Inspection Toolbox&trade;
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -208,11 +202,11 @@ Soporte para MATLAB, Computer Vision Toolbox, Deep Learning Toolbox, Image Proce
 | `matlab-read-write-point-cloud-file` | Leer y escribir datos de nubes de puntos 3D en formatos PLY, PCD, LAS/LAZ, PCAP, E57 e IDC. |
 | `matlab-recognize-text` | Compilar pipelines de OCR en MATLAB usando la función ocr(). |
 | `matlab-register-point-clouds` | Registrar y alinear nubes de puntos 3D usando algoritmos ICP, NDT, LOAM, FGR, correlación de fase y CPD. |
-| `matlab-use-visual-inspection` | Compilar sistemas de inspección de visión artificial con Visual Inspection Toolbox&trade;. |
+| `matlab-use-visual-inspection` | Compilar sistemas de inspección de visión artificial con Visual Inspection Toolbox. |
 
 ### Math and Optimization ([`math-and-optimization`](../../skills-catalog/math-and-optimization/))
 
-Soporte para MATLAB, Optimization Toolbox, Partial Differential Equation Toolbox&trade; y Symbolic Math Toolbox&trade;
+Soporte para Optimization Toolbox, Partial Differential Equation Toolbox&trade; y Symbolic Math Toolbox&trade;
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -222,7 +216,7 @@ Soporte para MATLAB, Optimization Toolbox, Partial Differential Equation Toolbox
 
 ### Parallel Computing ([`parallel-computing`](../../skills-catalog/parallel-computing/))
 
-Soporte para MATLAB, Parallel Computing Toolbox y MATLAB Parallel Server&trade;
+Soporte para Parallel Computing Toolbox y MATLAB Parallel Server&trade;
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -234,7 +228,7 @@ Soporte para MATLAB, Parallel Computing Toolbox y MATLAB Parallel Server&trade;
 
 ### Radar ([`radar`](../../skills-catalog/radar/))
 
-Soporte para MATLAB, Mapping Toolbox&trade;, Phased Array System Toolbox&trade;, Radar Toolbox&trade;, Sensor Fusion and Tracking Toolbox y Signal Processing Toolbox
+Soporte para Mapping Toolbox&trade;, Phased Array System Toolbox&trade;, Radar Toolbox&trade;, Sensor Fusion and Tracking Toolbox y Signal Processing Toolbox
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -245,7 +239,7 @@ Soporte para MATLAB, Mapping Toolbox&trade;, Phased Array System Toolbox&trade;,
 
 ### Reporting and Database Access ([`reporting-and-database-access`](../../skills-catalog/reporting-and-database-access/))
 
-Soporte para MATLAB, Database Toolbox&trade;, MATLAB Report Generator, Parallel Computing Toolbox y Simulink Report Generator&trade;
+Soporte para Database Toolbox&trade;, MATLAB Report Generator, Parallel Computing Toolbox y Simulink Report Generator&trade;
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -256,7 +250,7 @@ Soporte para MATLAB, Database Toolbox&trade;, MATLAB Report Generator, Parallel 
 
 ### RF and Mixed Signal ([`rf-and-mixed-signal`](../../skills-catalog/rf-and-mixed-signal/))
 
-Soporte para MATLAB, Simulink, Antenna Toolbox&trade;, Mixed-Signal Blockset&trade;, RF Blockset&trade;, RF PCB Toolbox&trade;, RF Toolbox&trade;, SerDes Toolbox&trade;, Signal Integrity Toolbox, Signal Processing Toolbox y Statistics and Machine Learning Toolbox
+Soporte para Antenna Toolbox&trade;, Mixed-Signal Blockset&trade;, RF Blockset&trade;, RF PCB Toolbox&trade;, RF Toolbox&trade;, SerDes Toolbox&trade;, Signal Integrity Toolbox, Signal Processing Toolbox y Statistics and Machine Learning Toolbox
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -284,7 +278,7 @@ Soporte para MATLAB, Simulink, Antenna Toolbox&trade;, Mixed-Signal Blockset&tra
 
 ### Robotics and Autonomous Systems ([`robotics-and-autonomous-systems`](../../skills-catalog/robotics-and-autonomous-systems/))
 
-Soporte para MATLAB, Navigation Toolbox&trade;, UAV Toolbox&trade; y Robotics System Toolbox&trade;
+Soporte para Navigation Toolbox&trade;, UAV Toolbox&trade; y Robotics System Toolbox&trade;
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -297,7 +291,7 @@ Soporte para MATLAB, Navigation Toolbox&trade;, UAV Toolbox&trade; y Robotics Sy
 
 ### Signal Processing ([`signal-processing`](../../skills-catalog/signal-processing/))
 
-Soporte para MATLAB, Simulink, Audio Toolbox&trade;, DSP HDL Toolbox&trade;, DSP System Toolbox&trade;, Fixed-Point Designer, HDL Coder&trade;, Signal Processing Toolbox y Wavelet Toolbox&trade;
+Soporte para Audio Toolbox&trade;, DSP HDL Toolbox&trade;, DSP System Toolbox&trade;, Fixed-Point Designer, HDL Coder&trade;, Signal Processing Toolbox y Wavelet Toolbox&trade;
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -316,7 +310,7 @@ Soporte para MATLAB, Simulink, Audio Toolbox&trade;, DSP HDL Toolbox&trade;, DSP
 
 ### Test and Measurement ([`test-and-measurement`](../../skills-catalog/test-and-measurement/))
 
-Soporte para MATLAB, Data Acquisition Toolbox&trade;, Image Acquisition Toolbox&trade;, Image Processing Toolbox, Industrial Communication Toolbox&trade;, Vehicle Network Toolbox&trade; y MATLAB Support Package for Arduino Hardware&trade;
+Soporte para Data Acquisition Toolbox&trade;, Image Acquisition Toolbox&trade;, Image Processing Toolbox, Industrial Communication Toolbox&trade;, Vehicle Network Toolbox&trade; y MATLAB Support Package for Arduino Hardware&trade;
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -336,7 +330,7 @@ Soporte para MATLAB, Data Acquisition Toolbox&trade;, Image Acquisition Toolbox&
 
 ### Wireless Communications ([`wireless-communications`](../../skills-catalog/wireless-communications/))
 
-Soporte para MATLAB, 5G Toolbox&trade;, Bluetooth&reg; Toolbox&trade;, Communications Toolbox&trade;, Satellite Communications Toolbox&trade;, Wireless Network Toolbox&trade;, Wireless Testbench&trade;, WLAN Toolbox&trade; y Wireless Testbench Support Package for NI USRP Radios&trade;
+Soporte para 5G Toolbox&trade;, Bluetooth&reg; Toolbox&trade;, Communications Toolbox&trade;, Satellite Communications Toolbox&trade;, Wireless Network Toolbox&trade;, Wireless Testbench&trade;, WLAN Toolbox&trade; y Wireless Testbench Support Package for NI USRP Radios&trade;
 
 | Skill | Qué le enseña a su agente |
 |-------|---------------------------|
@@ -357,7 +351,7 @@ Soporte para MATLAB, 5G Toolbox&trade;, Bluetooth&reg; Toolbox&trade;, Communica
 ## Cómo se instalan las skills
 
 Para obtener detalles sobre cómo se instalan estas skills, consulte
-[Instalar MATLAB Agentic Toolkit](../README.es.md#instalar-matlab-agentic-toolkit)
+[Introducción a MATLAB Agentic Toolkit](../README.es.md#introduccion-a-matlab-agentic-toolkit).
 
 ----
 

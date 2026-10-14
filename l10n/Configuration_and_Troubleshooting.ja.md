@@ -2,7 +2,7 @@
 Source English Markdown:
 - File: ./Configuration_and_Troubleshooting.md
 - Branch: main
-- Commit: 645cf259dedf8b012f89fdb7006ad7c1afa33e3e
+- Commit: 36431d841616bc7bcc461fe0413e822e557f5c32
 -->
 
 # 構成とトラブルシューティング
@@ -37,7 +37,7 @@ Source English Markdown:
 |----------|----------------|
 | MCP サーバー バイナリ | [MATLAB MCP Server latest release](https://github.com/matlab/matlab-mcp-server/releases/latest) — お使いのプラットフォーム用のバイナリ (例: `matlab-mcp-server-macos-arm64`、`matlab-mcp-server-windows-x64.exe`) をダウンロードします。 |
 | MCP サーバー ツールボックス | [MATLAB MCP Server latest release](https://github.com/matlab/matlab-mcp-server/releases/latest) — `MATLABMCPServerToolbox.mltbx` をダウンロードします。 |
-| Agentic Toolkit インストーラー | [Simulink Agentic Toolkit latest release](https://github.com/matlab/simulink-agentic-toolkit/releases/latest) — `agenticToolkitInstaller.mltbx` をダウンロードします。 |
+| Agentic Toolkit インストーラー パッケージ | [Simulink Agentic Toolkit latest release](https://github.com/matlab/simulink-agentic-toolkit/releases/latest) — `agenticToolkitInstaller.mltbx` をダウンロードします。 |
 | MATLAB Agentic Toolkit | [GitHub](https://github.com/matlab/matlab-agentic-toolkit) からクローンまたはダウンロードします。 |
 | Simulink Agentic Toolkit | [GitHub](https://github.com/matlab/simulink-agentic-toolkit) からクローンまたはダウンロードします。Simulink Agentic Toolkit をインストールする場合にのみ必要です。|
 
@@ -68,7 +68,7 @@ MATLAB がインストールされていない場合は、以下の手順で AI 
 1) [スキルのみ追加](#adding-skills-only)の手順で MATLAB Agentic Toolkit スキルをインストールします。
 2) エージェントに `matlab-install-products` スキルを使用して MATLAB をインストールするよう指示します。
 
-MATLAB のインストール後、[Agentic Toolkit インストーラー](README.ja.md#matlab-agentic-toolkit-のインストール) の手順に従って MATLAB MCP Server を自動的にインストールするか、MATLAB MCP Server を手動でインストールして構成することにより、MATLAB Agentic Toolkit のセットアップを完了できます。
+MATLAB のインストール後、[MATLAB Agentic Toolkit の使用を開始する](README.ja.md#matlab-agentic-toolkit-の使用を開始する) の手順に従って MATLAB MCP Server を自動的にインストールするか、MATLAB MCP Server を手動でインストールして構成することにより、MATLAB Agentic Toolkit のセットアップを完了できます。
 
 ---
 

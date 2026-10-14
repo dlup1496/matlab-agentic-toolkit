@@ -2,7 +2,7 @@
 Source English Markdown:
 - File: ./Configuration_and_Troubleshooting.md
 - Branch: main
-- Commit: 645cf259dedf8b012f89fdb7006ad7c1afa33e3e
+- Commit: 36431d841616bc7bcc461fe0413e822e557f5c32
 -->
 
 # Configuración y solución de problemas
@@ -37,7 +37,7 @@ Para instalar MATLAB Agentic Toolkit en un entorno sin conexión o aislado, prim
 |----------|----------------|
 | Binario de MCP Server | [Última versión de MATLAB MCP Server](https://github.com/matlab/matlab-mcp-server/releases/latest) — descargue el binario para su plataforma (por ejemplo, `matlab-mcp-server-macos-arm64`, `matlab-mcp-server-windows-x64.exe`). |
 | Toolbox de MCP Server | [Última versión de MATLAB MCP Server](https://github.com/matlab/matlab-mcp-server/releases/latest) — descargue `MATLABMCPServerToolbox.mltbx`. |
-| Instalador de Agentic Toolkit | [Última versión de Simulink Agentic Toolkit](https://github.com/matlab/simulink-agentic-toolkit/releases/latest) — descargue `agenticToolkitInstaller.mltbx`. |
+| Paquete del instalador de Agentic Toolkit | [Última versión de Simulink Agentic Toolkit](https://github.com/matlab/simulink-agentic-toolkit/releases/latest) — descargue `agenticToolkitInstaller.mltbx`. |
 | MATLAB Agentic Toolkit | Clone o descargue desde [GitHub](https://github.com/matlab/matlab-agentic-toolkit). |
 | Simulink Agentic Toolkit | Clone o descargue desde [GitHub](https://github.com/matlab/simulink-agentic-toolkit). Solo es necesario al instalar Simulink Agentic Toolkit.|
 
@@ -68,7 +68,7 @@ Si no tiene MATLAB instalado, puede instalar MATLAB con su agente de IA siguiend
 1) Instale las skills de MATLAB Agentic Toolkit siguiendo los pasos en [Agregar solo skills](#adding-skills-only).
 2) Solicite a su agente que instale MATLAB usando la skill `matlab-install-products`.
 
-Después de instalar MATLAB, puede completar la configuración de MATLAB Agentic Toolkit siguiendo las instrucciones en [Instalador de Agentic Toolkit](README.es.md#instalar-matlab-agentic-toolkit) para instalar automáticamente MATLAB MCP Server, o instalando y configurando manualmente MATLAB MCP Server.
+Después de instalar MATLAB, puede completar la configuración de MATLAB Agentic Toolkit siguiendo las instrucciones en [Introducción a MATLAB Agentic Toolkit](README.es.md#introduccion-a-matlab-agentic-toolkit) para instalar automáticamente MATLAB MCP Server, o instalando y configurando manualmente MATLAB MCP Server.
 
 ---
 

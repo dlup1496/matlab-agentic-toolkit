@@ -2,7 +2,7 @@
 Source English Markdown:
 - File: ./skills-catalog/README.md
 - Branch: main
-- Commit: a8c3d13fe0c8ebd9c05454bb38f13e5904eeabc4
+- Commit: 99face6879f8ff173a5dee635d0918d10e21d40c
 -->
 
 # スキル カタログ
@@ -54,14 +54,6 @@ table、timetable、フィルタリング、集計、時系列演算を使用し
 | `matlab-import-export-data` | ツール間でのデータ整合性を維持して表形式、構造化、バイナリ データをインポートおよびエクスポートする。 |
 | `matlab-secure-credentials` | 組み込みの MATLAB Vault を使用して MATLAB で安全に資格情報を保存、取得、渡す。 |
 
-### MATLAB 環境と設定 ([`matlab-environment-and-settings`](../../skills-catalog/matlab-environment-and-settings/))
-
-リリース間の MATLAB 設定の差分比較とスタートアップ スクリプトの正しい設定パスへの移行
-
-| スキル | スキルがエージェントに提供する機能 |
-|-------|---------------------------|
-| `matlab-migrate-settings` | リリース間の MATLAB 設定を比較し、ターゲット リリースの正しい設定パスを使用するように、MATLAB 設定をプログラム的に構成する MATLAB コード ファイル (.m) を更新する。 |
-
 ### MATLAB 外部言語インターフェイス ([`matlab-external-language-interfaces`](../../skills-catalog/matlab-external-language-interfaces/))
 
 MATLAB から Python&reg; ライブラリを呼び出し、MEX ファイルをインターリーブされた複素数 API にアップグレード
@@ -81,23 +73,25 @@ MATLAB から Python&reg; ライブラリを呼び出し、MEX ファイルを�
 
 ### MATLAB ソフトウェア開発 ([`matlab-software-development`](../../skills-catalog/matlab-software-development/))
 
-テストの記述と実行、レガシ コードの最新化、パフォーマンスとメモリの最適化、ドキュメント作成とツールボックスの作成、プロジェクトの作成、ビルド プランの作成
+テストの記述と実行、レガシ コードの最新化、パフォーマンスとメモリの最適化、ドキュメント作成とツールボックスの作成、プロジェクトの作成、パッケージの管理、ビルド プランの作成
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
+| `matlab-configure-toml-project` | matlab.toml プロジェクト ファイル (フォルダー、依存関係、ラベル、エクスポート プロファイル、ライフサイクル スクリプト、MATLAB パッケージ メタデータ) を作成および編集する。 |
 | `matlab-instrument-opentelemetry-tracing` | MATLAB 関数に、正しいコンテキスト伝播とライフサイクル管理を備えた  OpenTelemetry トレーシング スパンを追加する。 |
 | `matlab-modernize-code` | 削除または非推奨の MATLAB 関数とパターンを最新化する。 |
 | `matlab-optimize-memory` | 構造化された測定、プロファイリング、最適化、および検証から成るワークフローを使用して MATLAB コードのメモリ ボトルネックを見つけて修正する。 |
 | `matlab-optimize-performance` | MATLAB コードのパフォーマンスを最適化する。 |
 | `matlab-package-toolbox` | MATLAB コードをインストール可能な .mltbx ツールボックスとしてパッケージ化する。 |
 | `matlab-run-tests` | MATLAB テスト スイートを実行し、コード カバレッジを収集して、CI/CD パイプラインを構成する。 |
+| `matlab-use-package-manager` | 製品内の MATLAB パッケージ マネージャー (mpm) を使用して MATLAB パッケージを管理および検査する。 |
 | `matlab-write-help` | MathWorks ドキュメント標準に従って MATLAB ヘルプ テキストを生成または改善する。 |
 | `matlab-write-performance-tests` | matlab.perftest.TestCase フレームワークを使用して MATLAB パフォーマンス テストを記述する。 |
 | `matlab-write-tests` | クラスベースのテスト フレームワークを使用して MATLAB ユニット テストを生成および構造化する。 |
 
 ### 航空宇宙関連 ([`aerospace`](../../skills-catalog/aerospace/))
 
-MATLAB、Aerospace Toolbox&trade; をサポート
+Aerospace Toolbox&trade; をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -106,7 +100,7 @@ MATLAB、Aerospace Toolbox&trade; をサポート
 
 ### AI および統計 ([`ai-and-statistics`](../../skills-catalog/ai-and-statistics/))
 
-MATLAB、Simulink、Curve Fitting Toolbox&trade;、Deep Learning Toolbox&trade;、Embedded Coder&trade;、Fixed-Point Designer&trade;、MATLAB Coder&trade;、MATLAB Compiler SDK&trade;、MATLAB Report Generator&trade;、Optimization Toolbox&trade;、Parallel Computing Toolbox&trade;、Statistics and Machine Learning Toolbox&trade;、Deep Learning Toolbox Converter for ONNX Model Format&trade;、Deep Learning Toolbox Converter for PyTorch Models&trade;、Deep Learning Toolbox Converter for TensorFlow Models&trade; をサポート
+Curve Fitting Toolbox&trade;、Deep Learning Toolbox&trade;、Embedded Coder&trade;、Fixed-Point Designer&trade;、MATLAB Coder&trade;、MATLAB Compiler SDK&trade;、MATLAB Report Generator&trade;、Optimization Toolbox&trade;、Parallel Computing Toolbox&trade;、Statistics and Machine Learning Toolbox&trade;、Deep Learning Toolbox Converter for ONNX Model Format&trade;、Deep Learning Toolbox Converter for PyTorch Models&trade;、Deep Learning Toolbox Converter for TensorFlow Models&trade; をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -123,7 +117,7 @@ MATLAB、Simulink、Curve Fitting Toolbox&trade;、Deep Learning Toolbox&trade;�
 
 ### 自動車関連 ([`automotive`](../../skills-catalog/automotive/))
 
-MATLAB、Simulink、Automated Driving Toolbox&trade;、Computer Vision Toolbox&trade;、RoadRunner、RoadRunner Scenario、RoadRunner Scene Builder、Sensor Fusion and Tracking Toolbox&trade;、Automated Driving Toolbox Interface for Eclipse SUMO Traffic Simulator&trade;、Scenario Builder for Automated Driving Toolbox&trade; をサポート
+Automated Driving Toolbox&trade;、Computer Vision Toolbox&trade;、RoadRunner、RoadRunner Scenario、RoadRunner Scene Builder、Sensor Fusion and Tracking Toolbox&trade;、Automated Driving Toolbox Interface for Eclipse SUMO Traffic Simulator&trade;、Scenario Builder for Automated Driving Toolbox&trade; をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -142,7 +136,7 @@ MATLAB、Simulink、Automated Driving Toolbox&trade;、Computer Vision Toolbox&t
 
 ### クラウド ソリューション ([`cloud-solutions`](../../skills-catalog/cloud-solutions/))
 
-MATLAB、MATLAB Drive&trade; をサポート
+MATLAB Drive&trade; をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -150,7 +144,7 @@ MATLAB、MATLAB Drive&trade; をサポート
 
 ### コード生成 ([`code-generation`](../../skills-catalog/code-generation/))
 
-MATLAB、Embedded Coder、Fixed-Point Designer、GPU Coder&trade;、MATLAB Coder、MATLAB Test&trade;、Parallel Computing Toolbox、MATLAB Coder Support Package for PyTorch and LiteRT Models&trade; をサポート
+Embedded Coder、Fixed-Point Designer、GPU Coder&trade;、MATLAB Coder、MATLAB Test&trade;、Parallel Computing Toolbox、MATLAB Coder Support Package for PyTorch and LiteRT Models&trade; をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -162,7 +156,7 @@ MATLAB、Embedded Coder、Fixed-Point Designer、GPU Coder&trade;、MATLAB Coder
 
 ### 情報生命科学 ([`computational-biology`](../../skills-catalog/computational-biology/))
 
-MATLAB、SimBiology&trade;、Statistics and Machine Learning Toolbox をサポート
+SimBiology&trade;、Statistics and Machine Learning Toolbox をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -172,7 +166,7 @@ MATLAB、SimBiology&trade;、Statistics and Machine Learning Toolbox をサポ�
 
 ### 金融工学 ([`computational-finance`](../../skills-catalog/computational-finance/))
 
-MATLAB、Datafeed Toolbox&trade;、Financial Instruments Toolbox&trade;、Financial Toolbox&trade;、Spreadsheet Link&trade; をサポート
+Datafeed Toolbox&trade;、Financial Instruments Toolbox&trade;、Financial Toolbox&trade;、Spreadsheet Link&trade; をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -183,7 +177,7 @@ MATLAB、Datafeed Toolbox&trade;、Financial Instruments Toolbox&trade;、Financ
 
 ### 制御システム ([`control-systems`](../../skills-catalog/control-systems/))
 
-MATLAB、Control System Toolbox&trade;、Predictive Maintenance Toolbox&trade;、Signal Processing Toolbox&trade;、Statistics and Machine Learning Toolbox、System Identification Toolbox&trade; をサポート
+Control System Toolbox&trade;、Predictive Maintenance Toolbox&trade;、Signal Processing Toolbox&trade;、Statistics and Machine Learning Toolbox、System Identification Toolbox&trade; をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -193,7 +187,7 @@ MATLAB、Control System Toolbox&trade;、Predictive Maintenance Toolbox&trade;�
 
 ### イメージ処理とコンピューター ビジョン ([`image-processing-and-computer-vision`](../../skills-catalog/image-processing-and-computer-vision/))
 
-MATLAB、Computer Vision Toolbox、Deep Learning Toolbox、Image Processing Toolbox&trade;、Lidar Toolbox&trade;、Medical Imaging Toolbox&trade;、Optical Design and Simulation Library for Image Processing Toolbox&trade; をサポート
+Computer Vision Toolbox、Deep Learning Toolbox、Image Processing Toolbox&trade;、Lidar Toolbox&trade;、Medical Imaging Toolbox&trade;、Optical Design and Simulation Library for Image Processing Toolbox&trade;、Visual Inspection Toolbox&trade; をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -208,11 +202,11 @@ MATLAB、Computer Vision Toolbox、Deep Learning Toolbox、Image Processing Tool
 | `matlab-read-write-point-cloud-file` | PLY、PCD、LAS/LAZ、PCAP、E57、IDC 形式で 3D 点群データを読み書きする。 |
 | `matlab-recognize-text` | ocr() 関数を使用して MATLAB で OCR パイプラインを構築する。 |
 | `matlab-register-point-clouds` | ICP、NDT、LOAM、FGR、位相相関、CPD アルゴリズムを使用して 3D 点群の位置合わせを行う。 |
-| `matlab-use-visual-inspection` | Visual Inspection Toolbox&trade; を使用してマシン ビジョン検査システムを構築する。 |
+| `matlab-use-visual-inspection` | Visual Inspection Toolbox を使用してマシン ビジョン検査システムを構築する。 |
 
 ### 数学および最適化 ([`math-and-optimization`](../../skills-catalog/math-and-optimization/))
 
-MATLAB、Optimization Toolbox、Partial Differential Equation Toolbox&trade;、Symbolic Math Toolbox&trade; をサポート
+Optimization Toolbox、Partial Differential Equation Toolbox&trade;、Symbolic Math Toolbox&trade; をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -222,7 +216,7 @@ MATLAB、Optimization Toolbox、Partial Differential Equation Toolbox&trade;、S
 
 ### 並列計算 ([`parallel-computing`](../../skills-catalog/parallel-computing/))
 
-MATLAB、Parallel Computing Toolbox、MATLAB Parallel Server&trade; をサポート
+Parallel Computing Toolbox、MATLAB Parallel Server&trade; をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -234,7 +228,7 @@ MATLAB、Parallel Computing Toolbox、MATLAB Parallel Server&trade; をサポー
 
 ### レーダー ([`radar`](../../skills-catalog/radar/))
 
-MATLAB、Mapping Toolbox&trade;、Phased Array System Toolbox&trade;、Radar Toolbox&trade;、Sensor Fusion and Tracking Toolbox、Signal Processing Toolbox をサポート
+Mapping Toolbox&trade;、Phased Array System Toolbox&trade;、Radar Toolbox&trade;、Sensor Fusion and Tracking Toolbox、Signal Processing Toolbox をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -245,7 +239,7 @@ MATLAB、Mapping Toolbox&trade;、Phased Array System Toolbox&trade;、Radar Too
 
 ### レポートとデータベース アクセス ([`reporting-and-database-access`](../../skills-catalog/reporting-and-database-access/))
 
-MATLAB、Database Toolbox&trade;、MATLAB Report Generator、Parallel Computing Toolbox、Simulink Report Generator&trade; をサポート
+Database Toolbox&trade;、MATLAB Report Generator、Parallel Computing Toolbox、Simulink Report Generator&trade; をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -256,7 +250,7 @@ MATLAB、Database Toolbox&trade;、MATLAB Report Generator、Parallel Computing 
 
 ### RF およびミックスド シグナル ([`rf-and-mixed-signal`](../../skills-catalog/rf-and-mixed-signal/))
 
-MATLAB、Simulink、Antenna Toolbox&trade;、Mixed-Signal Blockset&trade;、RF Blockset&trade;、RF PCB Toolbox&trade;、RF Toolbox&trade;、SerDes Toolbox&trade;、Signal Integrity Toolbox、Signal Processing Toolbox、Statistics and Machine Learning Toolbox をサポート
+Antenna Toolbox&trade;、Mixed-Signal Blockset&trade;、RF Blockset&trade;、RF PCB Toolbox&trade;、RF Toolbox&trade;、SerDes Toolbox&trade;、Signal Integrity Toolbox、Signal Processing Toolbox、Statistics and Machine Learning Toolbox をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -284,7 +278,7 @@ MATLAB、Simulink、Antenna Toolbox&trade;、Mixed-Signal Blockset&trade;、RF B
 
 ### ロボティクスおよび自律システム ([`robotics-and-autonomous-systems`](../../skills-catalog/robotics-and-autonomous-systems/))
 
-MATLAB、Navigation Toolbox&trade;、UAV Toolbox&trade;、Robotics System Toolbox&trade; をサポート
+Navigation Toolbox&trade;、UAV Toolbox&trade;、Robotics System Toolbox&trade; をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -297,7 +291,7 @@ MATLAB、Navigation Toolbox&trade;、UAV Toolbox&trade;、Robotics System Toolbo
 
 ### 信号処理 ([`signal-processing`](../../skills-catalog/signal-processing/))
 
-MATLAB、Simulink、Audio Toolbox&trade;、DSP HDL Toolbox&trade;、DSP System Toolbox&trade;、Fixed-Point Designer、HDL Coder&trade;、Signal Processing Toolbox、Wavelet Toolbox&trade; をサポート
+Audio Toolbox&trade;、DSP HDL Toolbox&trade;、DSP System Toolbox&trade;、Fixed-Point Designer、HDL Coder&trade;、Signal Processing Toolbox、Wavelet Toolbox&trade; をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -316,7 +310,7 @@ MATLAB、Simulink、Audio Toolbox&trade;、DSP HDL Toolbox&trade;、DSP System T
 
 ### テストと計測 ([`test-and-measurement`](../../skills-catalog/test-and-measurement/))
 
-MATLAB、Data Acquisition Toolbox&trade;、Image Acquisition Toolbox&trade;、Image Processing Toolbox、Industrial Communication Toolbox&trade;、Vehicle Network Toolbox&trade;、MATLAB Support Package for Arduino Hardware&trade; をサポート
+Data Acquisition Toolbox&trade;、Image Acquisition Toolbox&trade;、Image Processing Toolbox、Industrial Communication Toolbox&trade;、Vehicle Network Toolbox&trade;、MATLAB Support Package for Arduino Hardware&trade; をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -336,7 +330,7 @@ MATLAB、Data Acquisition Toolbox&trade;、Image Acquisition Toolbox&trade;、Im
 
 ### 無線通信 ([`wireless-communications`](../../skills-catalog/wireless-communications/))
 
-MATLAB、5G Toolbox&trade;、Bluetooth&reg; Toolbox&trade;、Communications Toolbox&trade;、Satellite Communications Toolbox&trade;、Wireless Network Toolbox&trade;、Wireless Testbench&trade;、WLAN Toolbox&trade;、Wireless Testbench Support Package for NI USRP Radios&trade; をサポート
+5G Toolbox&trade;、Bluetooth&reg; Toolbox&trade;、Communications Toolbox&trade;、Satellite Communications Toolbox&trade;、Wireless Network Toolbox&trade;、Wireless Testbench&trade;、WLAN Toolbox&trade;、Wireless Testbench Support Package for NI USRP Radios&trade; をサポート
 
 | スキル | スキルがエージェントに提供する機能 |
 |-------|---------------------------|
@@ -357,7 +351,7 @@ MATLAB、5G Toolbox&trade;、Bluetooth&reg; Toolbox&trade;、Communications Tool
 ## スキルのインストール方法
 
 これらのスキルのインストール方法の詳細については、
-[MATLAB Agentic Toolkit のインストール](../README.ja.md#matlab-agentic-toolkit-のインストール) を参照してください。
+[MATLAB Agentic Toolkit の使用を開始する](../README.ja.md#matlab-agentic-toolkit-の使用を開始する) を参照してください。
 
 ----
 
