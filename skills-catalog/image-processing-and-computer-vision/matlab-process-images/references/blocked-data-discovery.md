@@ -29,7 +29,7 @@ Confirm findings with the user. Only ask what can't be inferred: what each filen
 
 ## Step 4: Understand intent
 Ask what the user plans to do: visualization, processing, archival, or DL training.
-- **3D data (Z-stacks, slices, volumes):** If the data has a Z/depth/slice dimension, treat it as a 3D volume. For visualization, default to `volshow` + `viewer3d` (see `3d-volumes.md`), not 2D slice-by-slice viewers. For multi-channel overlay, use `OverlayData` with `volshow`.
+- **3D data (Z-stacks, slices, volumes):** If the data has a Z/depth/slice dimension, treat it as a 3D volume. For visualization, default to `volshow` + `viewer3d` (see `blocked-3d-volumes.md`), not 2D slice-by-slice viewers. For multi-channel overlay, use `OverlayData` with `volshow`.
 - **Archival** + uncompressed data (check `imfinfo` Compression) -> suggest format conversion with compression (JPEG > PNG > H5Blocks)
 - **Visualization only** -> may not need a custom adapter if data can be pre-converted
 - **Processing** -> align IOBlockSize with expected processing block size

@@ -54,7 +54,7 @@ end
 
 | Detected type | Read with | Next step |
 |---------------|-----------|-----------|
-| `"dicom"` | `dicomread` + `dicominfo` (IPT) or `medicalImage` (Medical Imaging Toolbox) | Use **`matlab-read-medical-data`** skill |
+| `"dicom"` | `dicomread` + `dicominfo` (IPT) or `medicalImage` (Medical Imaging Toolbox) | See `references/medical-data-io.md` |
 | `"raw"` | `rawread` then `demosaic` | See `image-io.md` Camera RAW section |
 | `"standard"` | `imread` | Continue with characterization below |
 
@@ -62,8 +62,8 @@ end
 
 | Extension / Format | Read with | Notes |
 |---|---|---|
-| `.nii`, `.nii.gz` (NIfTI) | `niftiread` + `niftiinfo` | Medical/neuro volumes — use **`matlab-read-medical-data`** skill |
-| `.nrrd`, `.nhdr` (NRRD) | `nrrdread` + `nrrdinfo` | Medical/scientific volumes — use **`matlab-read-medical-data`** skill |
+| `.nii`, `.nii.gz` (NIfTI) | `niftiread` + `niftiinfo` | Medical/neuro volumes — see `references/medical-data-io.md` |
+| `.nrrd`, `.nhdr` (NRRD) | `nrrdread` + `nrrdinfo` | Medical/scientific volumes — see `references/medical-data-io.md` |
 | `.exr` (OpenEXR) | `exrread` | HDR/VFX — float data, often linear color space |
 | `.fits`, `.fts` (FITS) | `fitsread` + `fitsinfo` | Astronomy — may be multi-extension |
 | `.dpx` (DPX) | `dpxread` + `dpxinfo` | Film/broadcast — 10-bit log encoding |
@@ -107,7 +107,7 @@ fprintf("File size: %.1f KB\n", info.FileSize/1024);
 
 % STOP: Check dimensions before loading pixels
 if info.Width * info.Height > 100e6
-    % Large image (>100 MP) — load matlab-process-large-images skill
+    % Large image (>100 MP) — see references/large-image-processing.md
     return
 end
 

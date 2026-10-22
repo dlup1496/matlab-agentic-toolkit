@@ -1,7 +1,7 @@
 schema-version: 1
 license: https://www.mathworks.com/content/dam/mathworks/license/pmrl/license.md
 scope: cross-product
-version: "1.0"
+version: "1.1"
 human-description: Import and export tabular, structured, and binary data with cross-tool fidelity.
 matlab-release: ">=R2021a"
 required-tools:

@@ -1,6 +1,6 @@
 # Geospatial Blocked Images
 
-blockedImage works with GeoTIFF and other geospatial formats. For general coordinate system and spatial referencing concepts (subscripts, block subscripts, world coordinates, multiresolution alignment), see `specialized-workflows.md`.
+blockedImage works with GeoTIFF and other geospatial formats. For general coordinate system and spatial referencing concepts (subscripts, block subscripts, world coordinates, multiresolution alignment), see `blocked-specialized-workflows.md`.
 
 ## Setup
 ```matlab
@@ -42,7 +42,7 @@ Convert shapefile polygon vertices to pixel coordinates, then create a blockedIm
 bmask = polyToBlockedImage({[polyx' polyy']}, true, bimcrop.Size(1:2), ...
     WorldStart=bimcrop.WorldStart, WorldEnd=bimcrop.WorldEnd);
 ```
-Use the mask with `selectBlockLocations` and `ExtraImages` to process only the masked region with pixel-level masking. See `specialized-workflows.md` for the full `selectBlockLocations` + `ExtraImages` patterns (including `InclusionThreshold` tuning and resolution mismatch handling).
+Use the mask with `selectBlockLocations` and `ExtraImages` to process only the masked region with pixel-level masking. See `blocked-specialized-workflows.md` for the full `selectBlockLocations` + `ExtraImages` patterns (including `InclusionThreshold` tuning and resolution mismatch handling).
 ```matlab
 bls = selectBlockLocations(bimcrop, BlockSize=[512 512], ...
     Mask=bmask, InclusionThreshold=0);

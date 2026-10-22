@@ -6,6 +6,27 @@ shipped with 5G Toolbox (see the
 [5G NR TM Waveform Generation](https://mathworks.com/help/5g/ug/5g-nr-tm-waveform-generation.html)
 example).
 
+## First: Make the Helper Available (Portable Setup)
+
+`hNRReferenceWaveformGenerator` is an **example helper**, not a core toolbox
+function, so it is not on the path by default. Bring it in with a portable,
+reproducible mechanism — **never a hardcoded absolute path** (no user home or
+release folder), and **do not** invent a namespaced name like
+`wirelessWaveformApp.internal.hNRReferenceWaveformGenerator`:
+
+```matlab
+[exDir, ~] = setupExample('5g/NRTestModelWaveformGenerationExample', fullfile(tempdir, 'tmfrc'));
+workDir = fullfile(tempdir, 'myTMWaveform');
+mkdir(workDir);
+copyfile(fullfile(exDir, '*'), workDir);
+cd(workDir);
+```
+
+`openExample('5g/NRTestModelWaveformGenerationExample')` also works, as does an
+`addpath` whose target is derived at runtime from `matlabroot`/`tempdir`/the
+`setupExample`/`openExample` return value. Only after this is the helper
+callable by its plain name.
+
 ## Basic Usage
 
 ```matlab

@@ -2,7 +2,7 @@
 schema-version: 1
 license: https://www.mathworks.com/content/dam/mathworks/license/pmrl/license.md
 scope: product-specific
-version: "1.0"
+version: "1.1"
 human-description: Design, configure, and analyze radar systems in the Radar Designer app.
 matlab-release: ">=R2021a"
 toolkit: matlab-agentic-toolkit

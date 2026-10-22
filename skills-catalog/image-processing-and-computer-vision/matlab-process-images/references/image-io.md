@@ -9,7 +9,7 @@ Gotchas, non-obvious patterns, and decision guidance for image file I/O, type co
 **Decision flow:**
 
 1. Check: `hasMIT = ~isempty(ver("medical"));`
-2. If MIT is available → **STOP** — use the **`matlab-read-medical-data`** skill instead (provides `medicalVolume`, `medicalImage`, spatial referencing, RT structures, orientation)
+2. If MIT is available → **STOP** — use `references/medical-data-io.md` instead (provides `medicalVolume`, `medicalImage`, spatial referencing, RT structures, orientation)
 3. If MIT is NOT available → use the IPT-only patterns below
 
 ### Quick DICOM Read (IPT Only — use only when MIT is unavailable)
@@ -50,7 +50,7 @@ niftiwrite(V, "output.nii");             % Uncompressed
 
 ### Reminder: Check MIT First
 
-If you skipped the decision flow above: always check `~isempty(ver("medical"))` before using the IPT-only patterns. The **`matlab-read-medical-data`** skill provides superior APIs (`medicalImage`, `medicalVolume`) that auto-apply rescaling and preserve spatial metadata.
+If you skipped the decision flow above: always check `~isempty(ver("medical"))` before using the IPT-only patterns. See `references/medical-data-io.md` for superior APIs (`medicalImage`, `medicalVolume`) that auto-apply rescaling and preserve spatial metadata.
 
 ## Type Awareness — Critical Rule
 
@@ -298,36 +298,7 @@ ldr = localtonemap(hdr);
 
 ## Video I/O
 
-### Key Gotcha: Memory
-
-`read(v)` loads ALL frames into memory. For large videos, iterate instead:
-
-```matlab
-v = VideoReader("clip.mp4");
-while hasFrame(v)
-    frame = readFrame(v);
-    % Process frame...
-end
-```
-
-For specific frame ranges: `frames = read(v, [10 20]);`
-
-### VideoWriter — Always Close
-
-An unclosed `VideoWriter` produces a corrupt file. Use `onCleanup`:
-
-```matlab
-vw = VideoWriter("output.mp4", "MPEG-4");
-cleanup = onCleanup(@() close(vw));
-vw.FrameRate = 30;
-vw.Quality = 95;
-open(vw);
-for i = 1:numFrames
-    writeVideo(vw, frames(:,:,:,i));
-end
-```
-
-**Profiles:** `"MPEG-4"` (.mp4), `"Motion JPEG AVI"`, `"Grayscale AVI"`, `"Uncompressed AVI"`
+See `references/video-io.md` for full video reading/writing guidance including `VideoReader`, `VideoWriter`, profiles, frame counting, and common pitfalls.
 
 ## Batch Processing with Datastores
 
@@ -368,7 +339,7 @@ For large images, avoid loading the full file:
 sub = imread("big.tif", PixelRegion={[1 500], [1 500]});  % Rows 1-500, cols 1-500
 ```
 
-For very large images (gigapixel), use `matlab-process-large-images` skill instead.
+For very large images (gigapixel), see `references/large-image-processing.md`.
 
 ## Synthetic Test Images
 

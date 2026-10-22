@@ -4,6 +4,10 @@ Decision guidance for choosing and using deconvolution methods, PSF estimation, 
 
 > **Often loaded with:** `image-io.md` (loading blurred image), `quality-assessment.md` (measuring restoration quality).
 
+## Image Degradation Model
+
+All deconvolution methods solve variants of the degradation equation: **g = H·f + n**, where `g` is the observed (blurred) image, `H` is the point spread function (PSF) representing the blur, `f` is the original sharp image, and `n` is additive noise. The goal is to recover `f` given `g`, with varying assumptions about `H` and `n`.
+
 ## Choosing a Deconvolution Method
 
 | Method | PSF known? | Noise level | Quality | Speed | Use when |

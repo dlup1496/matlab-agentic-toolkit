@@ -288,6 +288,23 @@ freqz2(h, [64 64]);                        % Mesh plot of magnitude response
 [H, fx, fy] = freqz2(h, [64 64]);          % Return response for custom analysis
 ```
 
+## Local Entropy Filtering — `entropyfilt`
+
+`entropyfilt` computes local entropy in a sliding neighborhood — higher values indicate more complex local texture. Useful for segmenting textured regions from smooth backgrounds or as a feature for classification:
+
+```matlab
+E = entropyfilt(img);              % Default 9×9 neighborhood
+E = entropyfilt(img, true(15));    % Custom 15×15 neighborhood
+
+% Segment textured vs smooth regions
+mask = imbinarize(E);
+```
+
+- Input must be **grayscale** (2-D). For RGB, convert to grayscale first.
+- Default neighborhood is **9×9** — increase for coarser texture discrimination, decrease for finer.
+- Output is `double` regardless of input class — rescale or threshold as needed.
+- For texture classification with multiple features, combine `entropyfilt` with `stdfilt` and `rangefilt`. See also `texture-transforms.md` for Gabor and GLCM alternatives.
+
 ## Interpreting Filter Outputs — Not All Outputs Are Images
 
 Some filtering operations produce **feature representations**, not enhanced images. The output is a measurement of local image structure, not a visually improved version of the input:

@@ -174,7 +174,7 @@ Supports Control System Toolbox&trade;, Predictive Maintenance Toolbox&trade;, S
 
 | Skill | What it teaches your agent |
 |-------|---------------------------|
-| `matlab-extract-battery-features` | Extract battery features from cycling test data for degradation and health analysis. |
+| `matlab-extract-battery-features` | Extract battery features from cycling, pulse, EIS, and in-field measurement data. |
 | `matlab-extract-rotating-machinery-features` | Extract features from rotating machinery vibration data for condition monitoring and fault detection. |
 | `matlab-identify-linear-system` | Identify linear dynamic models from measurement data using System Identification Toolbox. |
 
@@ -190,8 +190,6 @@ Supports Computer Vision Toolbox, Deep Learning Toolbox, Image Processing Toolbo
 | `matlab-integrate-pytorch-vision` | Create MATLAB interfaces to Python image processing and computer vision models from GitHub repositories or pip packages using MPyReq. |
 | `matlab-model-optics` | Build, import, analyze, optimize, and tolerance optical systems and coatings using the Optical Design and Simulation Library. |
 | `matlab-process-images` | Process, analyze, and transform images using MATLAB Image Processing Toolbox. |
-| `matlab-process-large-images` | Process large images using blockedImage. |
-| `matlab-read-medical-data` | Read, write, and manipulate medical imaging data (DICOM, NIfTI, NRRD) using Image Processing Toolbox and Medical Imaging Toolbox APIs. |
 | `matlab-read-write-point-cloud-file` | Read and write 3-D point cloud data in PLY, PCD, LAS/LAZ, PCAP, E57, and IDC formats. |
 | `matlab-recognize-text` | Build OCR pipelines in MATLAB using the ocr() function. |
 | `matlab-register-point-clouds` | Register and align 3-D point clouds using ICP, NDT, LOAM, FGR, phase correlation, and CPD algorithms. |

@@ -14,7 +14,7 @@ Use this when building an image incrementally outside of `apply()` (e.g., assemb
 - **BlockSub** — index into `SizeInBlocks` (which block). Convert with `sub2blocksub` / `blocksub2sub`.
 - **World** — real-world coordinates. Convert with `sub2world` / `world2sub`. Set via `WorldStart` and `WorldEnd` properties.
 
-For geospatial coordinate conversions (projected/geographic to pixel), see `geospatial.md`.
+For geospatial coordinate conversions (projected/geographic to pixel), see `blocked-geospatial.md`.
 
 ### Multiresolution spatial referencing
 blockedImage assumes all resolution levels span the **same world extents**. By default, `WorldStart` and `WorldEnd` are set from the finest level's pixel coordinates (center of first pixel at 0.5, last edge at `Size + 0.5`).

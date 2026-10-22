@@ -7,7 +7,7 @@ blockedImage supports 3D volumes (e.g., MRI, CT, microscopy stacks). Load a volu
 bim = blockedImage(vol);  % vol is a 3D or 4D numeric array
 ```
 
-For single-file multi-page TIFF stacks, use a custom adapter with `tiffreadVolume` and `PixelRegion` for efficient sub-volume random access without loading the entire file. See the "Reference adapter: single multi-page TIFF volume via `tiffreadVolume`" section in `data-discovery.md`.
+For single-file multi-page TIFF stacks, use a custom adapter with `tiffreadVolume` and `PixelRegion` for efficient sub-volume random access without loading the entire file. See the "Reference adapter: single multi-page TIFF volume via `tiffreadVolume`" section in `blocked-data-discovery.md`.
 
 ## 3D Visualization with `volshow`
 
@@ -149,7 +149,7 @@ bimOverview = makeMultiLevel3D(bim, Scales=0.2, ...
 ### Load and inspect the overview
 ```matlab
 vOverview = gather(bimOverview);
-imshow(imadjust(vOverview(:,:,1)), Interpolation="bilinear");
+imageshow(imadjust(vOverview(:,:,1)), Interpolation="bilinear");
 ```
 
 ### Build a multi-level pyramid

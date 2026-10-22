@@ -113,20 +113,27 @@ radarDesignerSession('load', h, 'C:/path/to/mydesign.mat');
 ## Export to MATLAB Script
 
 ```matlab
-% Export SNR vs Range analysis script
-radarDesignerExport(h, 'snr');
+% Export Detectability Analysis (SNR, Pd, Env Losses, Link Budget)
+radarDesignerExport(h, 'detectability');
 
-% Export Radar Metrics Report
-radarDesignerExport(h, 'report');
-
-% Export Vertical Coverage script
+% Export Vertical Coverage
 radarDesignerExport(h, 'coverage');
 
-% Export Range-Doppler Grid script
-radarDesignerExport(h, 'rdgrid');
+% Generate Metrics Report
+radarDesignerExport(h, 'report');
+
+% Export Radar Data Generator — no atmospheric refraction
+radarDesignerExport(h, 'rdg');
+
+% Export Radar Data Generator — Effective Earth Radius refraction
+radarDesignerExport(h, 'rdg', 'effectiveearth');
+
+% Export Radar Data Generator — CRPL Exponential refraction
+radarDesignerExport(h, 'rdg', 'crpl');
 ```
 
 Export opens the generated script automatically in the MATLAB editor.
+The two atmospheric refraction options require a non-free-space environment with curved Earth and standard/low/mid/high latitude atmosphere.
 
 ---
 

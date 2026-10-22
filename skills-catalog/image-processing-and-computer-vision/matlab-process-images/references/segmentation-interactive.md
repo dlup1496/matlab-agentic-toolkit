@@ -1,6 +1,6 @@
 # Interactive Segmentation
 
-Decision guidance for segmentation methods that use user input — point/box prompts, scribbles, ROIs, seed points, or initial masks. When a user can provide any form of guidance, **prompted SAM is the recommended first choice** for its accuracy, flexibility, and zero-shot capability.
+Decision guidance for segmentation methods that use user input — point/box prompts, scribbles, ROIs, seed points, or initial masks. **Prompted SAM** is a strong general-purpose option for point or bounding-box prompts; classical methods may be more appropriate when the task is defined by intensity similarity, edge contrast, or an initial mask.
 
 > **Often loaded with:** `morphological-ops.md` (cleaning up masks), `analysis-measurement.md` (measuring segmented regions), `segmentation-automated.md` (when no user input is available).
 
@@ -8,7 +8,7 @@ Decision guidance for segmentation methods that use user input — point/box pro
 
 | Task | User input | Algorithm |
 |------|-----------|-----------|
-| Segment specific object (best quality) | Point or bounding box | `segmentAnythingModel` (prompted SAM) **(CVT+DLT)** |
+| Segment an object from sparse visual prompts | Point or bounding box | `segmentAnythingModel` (prompted SAM 2 / SAM) **(CVT+DLT)** |
 | Foreground/background separation | ROI rectangle | `grabcut` (requires superpixels) |
 | Foreground/background from strokes | Scribbles | `lazysnapping` (requires superpixels) |
 | 2–3 regions from strokes | Scribbles | `imseggeodesic` |
@@ -18,29 +18,29 @@ Decision guidance for segmentation methods that use user input — point/box pro
 | Medical organ/tumor (interactive box) | Bounding box | `medicalSegmentAnythingModel` **(MIT)** |
 | Cell/nucleus instances | Automatic or prompted | `cellpose` → `segmentCells2D` / `segmentCells3D` **(MIT)** |
 
-**Default recommendation:** Use prompted SAM when available — it handles the widest range of scenarios with minimal user input and no training data.
+**General-purpose recommendation:** Use prompted SAM when available — it handles a wide range of scenarios with minimal user input and no training data. For tasks defined by intensity similarity (flood-fill, region growing) or evolving an initial mask to edges, the classical methods below may be more direct.
 
-**Coordinate order varies by function:** SAM functions (`ForegroundPoints`, `BoundingBox`) use **(x, y)** order. Seed-based functions (`grayconnected`, `graydiffweight`, `imsegfmm`) use **(C, R)** order (column first, then row). Active contour and masks use standard **(row, col)** array indexing.
+**Coordinate order varies by function:** SAM functions (`ForegroundPoints`, `BoundingBox`) use **(x, y)** order. `grayconnected` uses **(row, col)** order. `graydiffweight` and coordinate-based `imsegfmm` use **(col, row)** order (column first, then row). Active contour and masks use standard **(row, col)** array indexing.
 
-## Prompted SAM — First Choice (R2024b+)
+## Prompted SAM 2 and SAM (R2024b+)
 
-Requires IPT Model for Segment Anything Model support package and Computer Vision Toolbox + Deep Learning Toolbox.
+Requires IPT Model for Segment Anything Model support package and Computer Vision Toolbox + Deep Learning Toolbox. By default, `segmentAnythingModel` uses `"sam2-large"` but also supports other SAM 2 variants (e.g., `"sam2-tiny"`, `"sam2-small"`, `"sam2-base-plus"`) and the base SAM model (`"sam-base"`).
 
 ```matlab
 try
-    sam = segmentAnythingModel;  % Verifies support package AND Python environment
+    sam = segmentAnythingModel;  % Verifies support package and required add-on are available
     hasSAM = true;
 catch
-    hasSAM = false;  % Help the user install the support package or fix the Python environment
+    hasSAM = false;  % Help the user install the support package
 end
 ```
 
-> **Do not use `which` alone** — `~isempty(which("segmentAnythingModel"))` returns true even when the Python environment is missing or broken. Always attempt construction to confirm usability.
+> **Do not use `which` alone** — it can return true even when required add-ons are missing. Attempt construction to confirm usability.
 
 ### Setup
 
 ```matlab
-sam = segmentAnythingModel("sam2-large");
+sam = segmentAnythingModel;              % Uses "sam2-large" by default
 embeddings = extractEmbeddings(sam, I);  % Expensive — do ONCE per image
 ```
 
@@ -83,7 +83,7 @@ mask2 = segmentObjectsFromEmbeddings(sam, embeddings, size(I), ...
 - `ForegroundPoints` and `BoundingBox` use **(x, y)** order, not (row, col)
 - Combine foreground + background points for difficult cases
 
-**Fallback** when SAM unavailable: `grabcut` for foreground/background, `activecontour` for boundary refinement, or `imsegfmm` for region growing.
+**When SAM is unavailable:** Use `grabcut` for foreground/background, `activecontour` for boundary refinement, or `imsegfmm` for region growing.
 
 ## GrabCut — Foreground/Background from ROI
 
@@ -122,6 +122,9 @@ Simple region growing based on intensity similarity to a seed pixel:
 
 ```matlab
 BW = grayconnected(I, row, col, 20);  % tolerance is positional (not a Name-Value pair)
+
+% R2026b: restrict to 4-connected pixels (horizontal/vertical only)
+BW = grayconnected(I, row, col, 20, Connectivity=4);
 ```
 
 ## Active Contours — Evolving Boundary
@@ -177,7 +180,9 @@ For full medical segmentation workflows (MedSAM, Cellpose, radiomics), see Medic
 
 ## Building Interactive Segmentation Apps
 
-Use App Designer to build custom interactive segmentation tools with SAM. The pattern combines a `Viewer` for display, annotation-based prompts, and real-time mask preview.
+The **Image Segmenter** app (`imageSegmenter`) provides built-in interactive segmentation tools, including SAM. Use it for ad-hoc interactive segmentation sessions.
+
+For custom apps, use App Designer with SAM. The pattern combines a `viewer2d` for display, annotation-based prompts, and real-time mask preview. For a complete walkthrough, see the doc example "Create an App to Segment Images with SAM" (R2026b).
 
 ### Architecture Pattern
 
@@ -363,7 +368,7 @@ rgb = labeloverlay(I, BW, Transparency=0.5);
 - Always compute `superpixels` before `grabcut` or `lazysnapping`
 - For prompted SAM, extract embeddings once per image — never per query
 - Use `bwareafilt` or `imfill` to clean up after interactive segmentation (see `morphological-ops.md`)
-- Prefer prompted SAM over grabcut/activecontour when CVT+DLT are available
+- Prompted SAM is a strong default when CVT+DLT are available; use classical methods when the task is better defined by intensity, edges, or an initial mask
 
 ## Common Mistakes
 

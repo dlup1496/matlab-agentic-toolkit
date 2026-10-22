@@ -2,8 +2,8 @@
 schema-version: 1
 license: https://www.mathworks.com/content/dam/mathworks/license/pmrl/license.md
 scope: cross-product
-version: "1.0"
-human-description: Extract battery features from cycling test data for degradation and health analysis.
+version: "2.0"
+human-description: Extract battery features from cycling, pulse, EIS, and in-field measurement data.
 matlab-release: ">=R2026a"
 toolkit: matlab-agentic-toolkit
 required-products:

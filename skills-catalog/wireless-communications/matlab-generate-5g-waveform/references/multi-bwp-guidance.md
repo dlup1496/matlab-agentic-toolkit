@@ -149,6 +149,8 @@ cfg.BandwidthParts{2}.NStartBWP = 54;   cfg.BandwidthParts{2}.NSizeBWP = 53;   %
 % so no time coordination is needed — SlotAllocation stays at its default
 % (every slot, 0:9), which needn't be restated.
 cfg.PDSCH{2} = cfg.PDSCH{1};
+cfg.PDSCH{2}.Label = 'PDSCH2';   % the copy keeps 'PDSCH1'; rename to tell them apart
+cfg.PDSCH{2}.RNTI = 2;          % a PDSCH on another BWP models a second UE
 cfg.PDSCH{1}.PRBSet = 0:cfg.BandwidthParts{1}.NSizeBWP-1;
 cfg.PDSCH{2}.BandwidthPartID = 2;
 cfg.PDSCH{2}.PRBSet = 0:cfg.BandwidthParts{2}.NSizeBWP-1;
@@ -174,6 +176,8 @@ cfg.PDCCH{1}.SlotAllocation = 0:2;
 cfg.PDCCH{1}.Period = [];            % do not repeat into BWP2's slots
 
 cfg.PDSCH{2} = cfg.PDSCH{1};
+cfg.PDSCH{2}.Label = 'PDSCH2';
+cfg.PDSCH{2}.RNTI = 2;
 cfg.PDSCH{1}.PRBSet = 0:cfg.BandwidthParts{1}.NSizeBWP-1;
 cfg.PDSCH{1}.SlotAllocation = 0:2;   % 15 kHz slots 0..2 = 0..3 ms
 cfg.PDSCH{2}.BandwidthPartID = 2;
@@ -199,6 +203,8 @@ cfg.PDCCH{1}.SlotAllocation = 0:2;
 cfg.PDCCH{1}.Period = [];
 
 cfg.PDSCH{2} = cfg.PDSCH{1};
+cfg.PDSCH{2}.Label = 'PDSCH2';
+cfg.PDSCH{2}.RNTI = 2;
 cfg.PDSCH{1}.PRBSet = 0:cfg.BandwidthParts{1}.NSizeBWP-1;
 cfg.PDSCH{1}.SlotAllocation = 0:2;
 cfg.PDSCH{2}.BandwidthPartID = 2;
@@ -266,6 +272,8 @@ cfg.BandwidthParts{1}.NSizeBWP  = (c30.NStartGrid + c30.NSizeGrid) - cfg.Bandwid
 % PDSCH per BWP. FDD sub-bands don't overlap, so both run every slot — the
 % default SlotAllocation (0:9) already does this and needn't be restated.
 cfg.PDSCH{2} = cfg.PDSCH{1};
+cfg.PDSCH{2}.Label = 'PDSCH2';
+cfg.PDSCH{2}.RNTI = 2;
 cfg.PDSCH{1}.PRBSet = 0:cfg.BandwidthParts{1}.NSizeBWP-1;
 cfg.PDSCH{2}.BandwidthPartID = 2;
 cfg.PDSCH{2}.PRBSet = 0:bwp15.NSizeBWP-1;

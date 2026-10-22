@@ -1,8 +1,8 @@
-function protocolSummary = checkCyclingProtocol(data, opts)
+function protocolSummary = checkCyclingProtocol(parser)
 %checkCyclingProtocol Analyze cycling protocol consistency across cycles.
-%   protocolSummary = checkCyclingProtocol(data, Name=Value) runs
-%   batteryTestDataParser to segment the data, then summarizes the protocol
-%   per step across all cycles. Reports whether each phase has a consistent
+%   protocolSummary = checkCyclingProtocol(parser) segments the data using
+%   the provided batteryTestDataParser, then summarizes the protocol per
+%   step across all cycles. Reports whether each phase has a consistent
 %   step sequence suitable for feature extraction.
 %
 %   Uses majority-based consistency: if >95% of cycles share the same step
@@ -10,15 +10,8 @@ function protocolSummary = checkCyclingProtocol(data, opts)
 %   identified and reported for potential exclusion.
 %
 %   Required Input:
-%       data - Table of battery cycling data
-%
-%   Name-Value Arguments:
-%       CurrentVariable     - Name of current column (default: "Current")
-%       VoltageVariable     - Name of voltage column (default: "Voltage")
-%       TimeVariable        - Name of time column (default: "DateTime")
-%       CycleIndexVariable  - Name of cycle index column (default: "Cycle_Index")
-%       StepIndexVariable   - Name of step index column (default: "Step_Index")
-%       TemperatureVariable - Name of temperature column (default: "", disabled)
+%       parser - batteryTestDataParser object (already configured with
+%                column mappings)
 %
 %   Output:
 %       protocolSummary - struct with fields:
@@ -31,63 +24,51 @@ function protocolSummary = checkCyclingProtocol(data, opts)
 %           .MajorityCycles        - Cycle indices matching the dominant protocol
 
 arguments
-    data table
-    opts.CurrentVariable string = "Current"
-    opts.VoltageVariable string = "Voltage"
-    opts.TimeVariable string = "DateTime"
-    opts.CycleIndexVariable string = "Cycle_Index"
-    opts.StepIndexVariable string = "Step_Index"
-    opts.TemperatureVariable string = ""
+    % No class constraint on parser: the public batteryTestDataParser factory
+    % returns an object whose only class name is internal
+    % (predmaint.internal.battery.BatteryTestDataParser); naming it in shipped
+    % code is brittle across PMT releases.
+    parser (1,1)
 end
 
-% Build parser
-if opts.TemperatureVariable ~= ""
-    parser = batteryTestDataParser(data, ...
-        CurrentVariable=opts.CurrentVariable, ...
-        VoltageVariable=opts.VoltageVariable, ...
-        TimeVariable=opts.TimeVariable, ...
-        CycleIndexVariable=opts.CycleIndexVariable, ...
-        StepIndexVariable=opts.StepIndexVariable, ...
-        TemperatureVariable=opts.TemperatureVariable);
-else
-    parser = batteryTestDataParser(data, ...
-        CurrentVariable=opts.CurrentVariable, ...
-        VoltageVariable=opts.VoltageVariable, ...
-        TimeVariable=opts.TimeVariable, ...
-        CycleIndexVariable=opts.CycleIndexVariable, ...
-        StepIndexVariable=opts.StepIndexVariable);
-end
+% Read variable names from parser properties
+currentVar = parser.CurrentVariable;
+voltageVar = parser.VoltageVariable;
+timeVar = parser.TimeVariable;
+cycleVar = parser.CycleIndexVariable;
+stepVar = parser.StepIndexVariable;
+
 segmented = segmentData(parser);
 
-cycles = unique(segmented.(opts.CycleIndexVariable));
+cycles = unique(segmented.(cycleVar));
 numCycles = numel(cycles);
 
 % Identify majority step sequence
-[majorityCycles, anomalousCycles] = ...
-    findMajorityProtocol(segmented, cycles, opts.CycleIndexVariable, opts.StepIndexVariable);
+[majorityCycles, anomalousCycles, ~] = ...
+    findMajorityProtocol(segmented, cycles, cycleVar, stepVar);
 
 % Build per-cycle-step summary using majority cycles only
 rows = [];
 for c = majorityCycles'
-    cycleMask = segmented.(opts.CycleIndexVariable) == c;
+    cycleMask = segmented.(cycleVar) == c;
     cycleData = segmented(cycleMask, :);
-    steps = unique(cycleData.(opts.StepIndexVariable));
+    steps = unique(cycleData.(stepVar));
 
     for s = steps'
-        stepMask = cycleData.(opts.StepIndexVariable) == s;
+        stepMask = cycleData.(stepVar) == s;
         stepData = cycleData(stepMask, :);
 
         numPoints = height(stepData);
-        medianI = median(stepData.(opts.CurrentVariable));
-        minV = min(stepData.(opts.VoltageVariable));
-        maxV = max(stepData.(opts.VoltageVariable));
+        medianI = median(stepData.(currentVar));
+        minV = min(stepData.(voltageVar));
+        maxV = max(stepData.(voltageVar));
 
-        % Duration
-        timeVar = stepData.(opts.TimeVariable);
-        if isdatetime(timeVar)
-            dur = seconds(timeVar(end) - timeVar(1));
+        % Duration (convert to numeric seconds)
+        timeCol = stepData.(timeVar);
+        if isdatetime(timeCol) || isduration(timeCol)
+            dur = seconds(timeCol(end) - timeCol(1));
         else
-            dur = timeVar(end) - timeVar(1);
+            dur = timeCol(end) - timeCol(1);
         end
 
         % Phase from parser (dominant)

@@ -16,7 +16,7 @@ Decision guidance for segmentation methods that require no user interaction — 
 | 2-D/3-D | Splitting touching convex objects (cells, particles) | Have binary mask | Marker-controlled watershed |
 | 2-D | Complex scene, zero-shot | No training data | `imsegsam` **(CVT+DLT)** (R2024b+) |
 | 2-D/3-D | Pixel-level classes | Have labeled data | `semanticseg` pipeline **(CVT+DLT)** |
-| 2-D | Instance (per-object masks) | Have labeled data | `maskrcnn` **(CVT+DLT)** |
+| 2-D | Instance (per-object masks) | Have labeled data | `maskrcnn` or `solov2` **(CVT+DLT)** |
 | 3-D volume | Multi-region | Automatic | `imsegkmeans3` |
 
 **When uncertain:** prefer simpler method first; escalate if it fails.
@@ -45,11 +45,11 @@ L = imquantize(I, thresh);
 
 ## Marker-Controlled Watershed — Critical Pattern
 
-**When to use:** Splitting touching/overlapping convex objects where you already have a clean binary mask (cells, particles, grains). This is the one scenario where watershed excels over modern alternatives.
+**When to use:** Use watershed segmentation to separate touching objects or to segment regions from an image gradient. To reduce oversegmentation, modify the distance or gradient image using suitable foreground and background markers before applying watershed.
 
 **When NOT to use:** For general scene segmentation, use SAM (`imsegsam`) or clustering. Superpixels over-segment uniformly (don't solve the "split touching blobs" problem).
 
-**Never apply `watershed` directly to a gradient.** Raw watershed produces thousands of regions. Always use marker-controlled approach:
+**Applying `watershed` directly to an unmodified gradient image can cause severe oversegmentation.** For gradient-based watershed segmentation, first compute suitable foreground and background markers, then use `imimposemin` to constrain the minima before applying `watershed` (see gradient-based example below). For distance-based watershed, use `imhmin` to suppress shallow minima:
 
 ```matlab
 % 1. Create binary mask
@@ -59,15 +59,15 @@ BW = imfill(BW, "holes");
 % 2. Distance transform (peaks at object centers)
 D = -bwdist(~BW);
 
-% 3. Suppress shallow minima (CRITICAL — prevents over-segmentation)
-D = imhmin(D, 2);  % h=2: higher → fewer regions
+% 3. Suppress shallow minima (prevents over-segmentation)
+D = imhmin(D, 2);
 
 % 4. Watershed
 L = watershed(D);
 L(~BW) = 0;  % Remove background label
 ```
 
-**Tuning `h` in `imhmin`:** too small = over-segmented, too large = objects merged. Start at 2, increase until object count looks right.
+**Tuning `h` in `imhmin(D, h)`:** Choose `h` based on the scale of `D` and the depths of the minima that represent unwanted regions. Increasing `h` generally reduces oversegmentation, but a value that is too large can merge distinct objects. Tune using representative images and verify the resulting object boundaries.
 
 ### Alternative: Gradient-Based with `imimposemin`
 
@@ -78,7 +78,7 @@ gmag = imgradient(im2double(I));
 markers = imextendedmin(imcomplement(im2double(I)), 0.1);
 gmag2 = imimposemin(gmag, markers);
 L = watershed(gmag2);
-L(L == 0) = 1;  % Merge watershed ridge lines into nearest region
+L(L == 0) = 1;  % Assign watershed ridge pixels to region 1
 ```
 
 ## Clustering — `imsegkmeans` vs `imsegisodata`
@@ -109,20 +109,22 @@ features = cat(3, single(I), single(imgaborfilt(im2gray(I), gBank)));
 L = imsegkmeans(features, 5);
 ```
 
-## SAM — Automatic Zero-Shot Segmentation (R2024b+)
+## SAM 2: Automatic Zero-Shot Segmentation (R2024b+)
+
+Use `imsegsam` to automatically segment an entire image or objects within a specified ROI using SAM 2. By default, the function uses SAM 2; you can also specify a base SAM model.
 
 Requires IPT Model for Segment Anything Model support package. Check availability:
 
 ```matlab
 try
-    sam = segmentAnythingModel;  % Verifies support package AND Python environment
+    sam = segmentAnythingModel;  % Verifies support package and required add-on are available
     hasSAM = true;
 catch
-    hasSAM = false;  % Help the user install the support package or fix the Python environment
+    hasSAM = false;  % Help the user install the support package
 end
 ```
 
-> **Do not use `which` alone** — it returns true even when the Python environment is broken. Attempt construction to confirm usability.
+> **Do not use `which` alone** — it can return true even when required add-ons are missing. Attempt construction to confirm usability.
 
 ```matlab
 [cc, scores] = imsegsam(I, MinObjectArea=500, ScoreThreshold=0.7);
@@ -130,7 +132,7 @@ end
 % cc.NumObjects, cc.PixelIdxList — use labelmatrix(cc) for a label map
 ```
 
-**Fallback** when SAM unavailable: `imsegisodata` for multi-region or `imsegkmeans` if K is known.
+**Alternatives when SAM is unavailable:** If the image contains regions that can be separated by intensity, color, or selected image features, consider `imsegisodata` when the number of clusters is unknown or `imsegkmeans` when you can specify the number of clusters. These methods are not direct substitutes for object-aware segmentation.
 
 `imsegsam` is automatic only (no prompts). For point/box-prompted segmentation, see `segmentAnythingModel` in `segmentation-interactive.md`.
 
@@ -141,6 +143,22 @@ For pixel-level classification with labeled training data, see `deep-learning-im
 ```matlab
 result = semanticseg(testImage, net);  % Returns categorical label map
 ```
+
+### Instance Segmentation
+
+For per-object masks (each object gets a unique ID), use Mask R-CNN or SOLOv2 **(CVT+DLT)**. SOLOv2 is more lightweight and often preferable when per-instance bounding boxes are not required:
+
+```matlab
+% SOLOv2 — lightweight instance segmentation
+net = solov2("resnet50-coco");
+[masks, labels, scores] = segmentObjects(net, testImage);
+
+% Mask R-CNN — instance segmentation with bounding boxes
+net = maskrcnn("resnet50-coco");
+[boxes, scores, labels, masks] = detectObjects(net, testImage);
+```
+
+To convert polygon-labeled ground truth into training data for Mask R-CNN or SOLOv2, use `instanceSegmentationTrainingData` **(R2026b+)**.
 
 ## Preprocessing for Segmentation
 
@@ -178,12 +196,12 @@ imageshow(gray, OverlayData=L);
 rgb = labeloverlay(gray, L, Transparency=0.5);
 ```
 
-`imageshow` with `OverlayData` is the modern approach — it renders the overlay interactively and supports clicking to inspect label values. Use `labeloverlay` only when you need an RGB array (e.g., for `imwrite` or compositing).
+Use `imageshow` with `OverlayData` to interactively inspect segmentation results. Use `labeloverlay` when you need an RGB overlay array for saving, compositing, or further processing.
 
 ## Conventions
 
 - Always use `imbinarize` — never `im2bw` (not recommended) or manual `graythresh` + threshold
-- For watershed, always suppress minima — never `watershed(imgradient(I))` directly
+- For watershed, always suppress or constrain minima first — never `watershed(imgradient(I))` on an unmodified gradient
 - For color segmentation, convert to L\*a\*b\* before clustering
 - Prefer `imsegisodata` over manual ISODATA when cluster count is unknown
 - Use `bwareafilt` or `imfill(BW, "holes")` to clean up after thresholding (see `morphological-ops.md`) — `imfill(BW)` without `"holes"` is interactive (opens a figure for seed point selection), not automatic
@@ -195,7 +213,7 @@ rgb = labeloverlay(gray, L, Transparency=0.5);
 | `watershed(imgradient(I))` | Severe over-segmentation (thousands of regions) | Marker-controlled: `imhmin` or `imimposemin` first |
 | `im2bw(I, level)` | Not recommended since R2016a | `imbinarize(I)` or `imbinarize(I, level)` |
 | Clustering in RGB space | RGB not perceptually uniform | Convert to L\*a\*b\*: `imsegkmeans(single(rgb2lab(I)), K)` |
-| `segnet` or `fcnLayers` | Do not exist in current releases | Use `deeplabv3plus` or `unet` (see `deep-learning-imaging.md`) |
+| `segnetLayers` or `fcnLayers` | Legacy / not recommended | Use `deeplabv3plus`, `unet`, or `solov2` (see `deep-learning-imaging.md`) |
 | `imshow(I, OverlayData=L)` | `imshow` does not support `OverlayData` | `imageshow(I, OverlayData=L)` (R2024b+) |
 
 ----

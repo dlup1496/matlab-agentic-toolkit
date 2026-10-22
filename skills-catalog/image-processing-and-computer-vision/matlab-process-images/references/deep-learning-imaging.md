@@ -118,7 +118,7 @@ Networks expect specific input ranges. Common patterns:
 | Custom (trained on [-1,1]) | [-1, 1] | `rescale(img, -1, 1)` |
 | Arbitrary range (medical HU, float sensors) | Dataset-specific z-score | Compute dataset mean/std, normalize |
 
-**Gotcha:** If your training data was uint8 [0,255] but inference images are double [0,1], the network will produce garbage. Always match inference preprocessing to training preprocessing.
+**Gotcha:** If training data was uint8 [0,255] but inference images are double [0,1], the network can produce incorrect predictions. Always match inference preprocessing to training preprocessing.
 
 #### Pretrained Networks (ImageNet / COCO)
 
@@ -214,7 +214,7 @@ end
 |----------|----------|
 | Grayscale image → network expects RGB (3-ch) | `repmat(grayImg, 1, 1, 3)` |
 | RGB image → network expects grayscale (1-ch) | `im2gray(rgbImg)` |
-| Medical volume → network expects 2-D slices | Process slice-by-slice |
+| Volumetric data with a 2-D network | Process slices independently only when a 2-D workflow is appropriate; otherwise, consider a 3-D architecture such as `unet3d` |
 | Multi-channel (>3) → standard network | Custom input layer or channel reduction |
 
 
@@ -241,13 +241,31 @@ layers = [
 net = dlnetwork(layers);
 ```
 
-Use `addLayers` and `connectLayers` for branching or multi-input architectures:
+Use `addLayers` and `connectLayers` for branching or multi-input architectures. Each layer must have a unique `Name`, and all inputs of multi-input layers (e.g., `concatenationLayer`) must be connected:
 
 ```matlab
 net = dlnetwork;
-net = addLayers(net, [imageInputLayer([256 256 3]) convolution2dLayer(3, 32)]);
-net = addLayers(net, [reluLayer concatenationLayer(3, 2)]);
-net = connectLayers(net, "conv", "relu");
+
+% Main path
+net = addLayers(net, [
+    imageInputLayer([256 256 3], Name="input")
+    convolution2dLayer(3, 32, Padding="same", Name="conv1")
+    reluLayer(Name="relu1")
+    ]);
+
+% Branch path
+net = addLayers(net, [
+    convolution2dLayer(1, 32, Padding="same", Name="conv_branch")
+    reluLayer(Name="relu_branch")
+    ]);
+
+% Merge
+net = addLayers(net, concatenationLayer(3, 2, Name="concat"));
+
+% Connect: branch takes same input, concat merges both paths
+net = connectLayers(net, "input", "conv_branch");
+net = connectLayers(net, "relu1", "concat/in1");
+net = connectLayers(net, "relu_branch", "concat/in2");
 ```
 
 Use **Deep Network Designer** app (`deepNetworkDesigner`) to visually inspect, edit, and validate network architectures.
@@ -264,10 +282,10 @@ Use `pretrainedEncoderNetwork` to create a feature extractor from a pretrained b
 
 | Architecture | Function | Best for |
 |-------------|----------|----------|
-| U-Net | `unet` | Medical imaging, small datasets |
-| 3-D U-Net | `unet3d` | Volumetric data (CT, MRI) |
-| DeepLab v3+ | `deeplabv3plus` | General segmentation, large images |
-| BISENet | `bisenetv2` | Real-time segmentation |
+| U-Net | `unet` | Limited training data and segmentation of small or intricate structures |
+| 3-D U-Net | `unet3d` | Volumetric image data, such as CT and MRI |
+| DeepLab v3+ | `deeplabv3plus` | Precise boundary delineation and objects at multiple scales |
+| BiSeNet v2 | `bisenetv2` | Real-time segmentation and applications with limited computational resources |
 
 ```matlab
 inputSize = [256 256 1];  % [H W C]
@@ -282,8 +300,11 @@ net = unet3d([64 64 64 1], numClasses, EncoderDepth=3);
 % DeepLab v3+ with pretrained backbone
 net = deeplabv3plus([256 256 3], numClasses, "resnet18");
 
-% BISENet v2 (lightweight, real-time)
+% BiSeNet v2 — pretrained transfer learning (keeps pretrained weights)
 net = bisenetv2(inputSize, numClasses);
+
+% BiSeNet v2 — custom uninitialized network (no pretrained weights)
+net = bisenetv2(inputSize, numClasses, NetworkType="custom");
 ```
 
 To adapt segmentation architectures for **image-to-image regression** (e.g., depth estimation, denoising), replace the final classification layer with a regression output (1 or N channels, no softmax):
@@ -347,9 +368,9 @@ testImg = (testImg - reshape(params.channelMeans, 1, 1, [])) ./ ...
 result = semanticseg(testImg, net);
 ```
 
-#### Patch-Based Inference (Large Images/Volumes)
+#### Tiled or Patch-Based Inference (Large Images/Volumes)
 
-For images larger than GPU memory:
+For images larger than GPU memory, use `blockedImage` with `apply` to process tiles:
 
 ```matlab
 bim = blockedImage(largeImage);
@@ -361,6 +382,8 @@ result = apply(bim, @(block) semanticseg(block.Data, net), ...
     BorderSize=overlap, ...
     PadPartialBlocks=true);
 ```
+
+For tiled training workflows that use `blockedImage` or `blockedImageDatastore` to prepare image tiles, see `references/large-image-processing.md`.
 
 ### Classification Metrics
 
@@ -417,7 +440,7 @@ end
 | Mismatched input range at inference | Network trained on [0,255] but given [0,1] | Match preprocessing exactly to training |
 | Grayscale into 3-channel network | Dimension mismatch error | `repmat(gray, 1, 1, 3)` |
 | Training segmentation without class weighting | Rare classes never learned | Use class weights or `"focal"` loss |
-| Processing large image at full resolution | Out of memory | Patch-based with `blockedImage` or `randomPatchExtractionDatastore` |
+| Processing a large image at full resolution | Can exceed available memory | Use tiled or patch-based processing when the full-resolution image exceeds available memory (`blockedImage` or `randomPatchExtractionDatastore`) |
 | `augmentedImageDatastore` for segmentation | Only augments images, not labels | Use `transform` with paired augmentation function |
 | Forgetting `"nearest"` for warping labels | `imwarp` default is linear → fractional labels | `imwarp(lbl, tform, Interpolation="nearest")` |
 

@@ -1,24 +1,6 @@
----
-name: matlab-read-medical-data
-description: >
-  Read, write, and manipulate medical imaging data (DICOM, NIfTI, NRRD)
-  in MATLAB. Covers Image Processing Toolbox functions (dicomreadVolume,
-  niftiread, dicomContours, dicomanon) and Medical Imaging
-  Toolbox enhanced APIs (medicalVolume, medicalImage, medicalref3d,
-  extractSlice, updateOrientation). Use when reading
-  medical files, listing DICOM series, extracting spatial referencing, changing
-  orientation, working with RT structures, or anonymizing
-  DICOM data. Some features require Medical Imaging Toolbox — see skill body
-  and references for details.
-license: https://www.mathworks.com/content/dam/mathworks/license/pmrl/license.md
-metadata:
-  author: MathWorks
-  version: "1.0"
----
-
 # Read and Write Medical Data
 
-Read, write, and manipulate medical imaging data in MATLAB. This skill covers both Image Processing Toolbox (IPT) functions and Medical Imaging Toolbox (MIT) enhanced APIs.
+Read, write, and manipulate medical imaging data in MATLAB. This reference covers both Image Processing Toolbox (IPT) functions and Medical Imaging Toolbox (MIT) enhanced APIs.
 
 ## When to Use
 
@@ -28,12 +10,6 @@ Read, write, and manipulate medical imaging data in MATLAB. This skill covers bo
 - Changing volume orientation or extracting oriented slices
 - Working with DICOM RT structures (contours, masks, modify/write)
 - Anonymizing DICOM data
-
-## When NOT to Use
-
-- Displaying or visualizing volumes (use `matlab-display-volume` skill)
-- Displaying 2-D medical images with annotations (use `matlab-display-image` skill)
-- Reading non-medical image formats (PNG, TIFF, JPEG) — use `imread`
 
 ## Toolbox Detection — CRITICAL FIRST STEP
 
@@ -65,7 +41,7 @@ Call `medicalVolume` or `dicomreadVolume` directly on the DICOM folder path. Do 
 % WITH Medical Imaging Toolbox (preferred):
 medVol = medicalVolume("path/to/dicom/folder");
 V = medVol.Voxels;               % Auto-rescaled (e.g., HU for CT)
-spacing = medVol.VoxelSpacing;   % [dx dy dz] in mm
+spacing = medVol.VoxelSpacing;   % [row col slice] in mm (note: constructor takes [x y z] but property returns [row col slice])
 orientation = medVol.Orientation; % "transverse", "coronal", "sagittal"
 modality = medVol.Modality;       % "CT", "MR"
 
@@ -136,7 +112,7 @@ medVolCoronal = updateOrientation(medVol, "coronal");  % Returns NEW object
 
 `updateOrientation` was introduced in **R2025a**.
 
-## Detailed Reference Files
+## Detailed Sub-Reference Files
 
 **IMPORTANT: Before generating code for any task below, read the matching reference file first.**
 
@@ -174,6 +150,7 @@ medVolCoronal = updateOrientation(medVol, "coronal");  % Returns NEW object
 - Never manually parse nested DICOM structs — use `dicomContours`
 - `extractSlice` argument order: `(vol, sliceIndex, direction)` — numeric before string
 - `intrinsicToWorld` returns 3 separate outputs: `[x, y, z]` — not a single vector
+- For physical z-spacing in DICOM, use `SpacingBetweenSlices` (0018,0088), NOT `SliceThickness` (0018,0050) — `SliceThickness` is the collimated slab width and may differ from inter-slice distance (e.g., 5 mm thick vs 7 mm apart = 2 mm gap). `medicalVolume.VoxelSpacing(3)` correctly uses `SpacingBetweenSlices`. When neither tag is reliable, difference consecutive `ImagePositionPatient` (0020,0032) z-values
 
 ----
 

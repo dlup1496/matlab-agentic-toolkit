@@ -219,10 +219,10 @@ reporting the implementation as complete.
 | Feature | `FileSet` | `BlockedFileSet` |
 |---------|-----------|-----------------|
 | **Use when** | Each file = one observation (whole-file reads) | Fixed-size records packed within files |
-| File listing | `fs.FileInfo.Filename` | `fs.FileInfo.Filename` |
+| File listing | `fs.FileInfo.Filename` | No `FileInfo` property — per-block filenames are in `BlockInfo.Filename` (one row per block) |
 | Count | `fs.NumFiles` | `fs.NumBlocks` (may overcount; use iteration) |
 | Iteration | `hasNextFile`/`nextfile` | `hasNextBlock`/`nextblock` |
-| Block info | N/A — full file path only | `BlockInfo` with `Filename`, `Offset`, `BlockSize` |
+| Block info | N/A — full file path only | `BlockInfo` with `Filename`, `FileSize`, `Offset`, `BlockSize` |
 | Partitioning | `partition(fs, n, idx)` | `partition(fs, n, idx)` |
 | Reading | Custom reader function (format-specific) | Custom reader function (typically `fopen`/`fseek`/`fread` internally) |
 

@@ -56,7 +56,7 @@ vol = medicalVolume(voxels, spatialRef); % Raw data + medicalref3d object
 |----------|------|-------------|
 | `Voxels` | m-by-n-by-p numeric (or N-D) | Voxel data (auto-rescaled to calibrated units) |
 | `VolumeGeometry` | medicalref3d | Spatial referencing object |
-| `VoxelSpacing` | 1-by-3 vector | [dx dy dz] in mm |
+| `VoxelSpacing` | 1-by-3 vector | [row col slice] in mm. **Note:** the `medicalref3d` constructor takes `[x y z]` order but `VoxelSpacing` returns `[row col slice]` — `prod(VoxelSpacing)` is order-invariant and safe; per-axis indexing requires awareness of this inversion |
 | `Orientation` | string | "transverse", "coronal", "sagittal", "mixed", "oblique", "unknown" |
 | `SpatialUnits` | string | "mm" or "unknown" |
 | `Modality` | string | "CT", "MR", etc. |

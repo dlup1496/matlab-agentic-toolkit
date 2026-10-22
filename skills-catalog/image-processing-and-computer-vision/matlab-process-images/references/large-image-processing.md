@@ -1,43 +1,25 @@
----
-name: matlab-process-large-images
-description: "Patterns for using blockedImage to process large images, harness parallel compute for image processing, and write custom adapters. Use when writing code that creates, processes, or visualizes blockedImage objects, when implementing images.blocked.Adapter subclasses, or when a user needs help with large image data. Always use this skill when working with TIFF,GeoTIFF, .svs, .ndpi, .czi or other WSI, satellite imagery or microscopy volume image formats."
-license: https://www.mathworks.com/content/dam/mathworks/license/pmrl/license.md
-metadata:
-  author: MathWorks
-  version: "1.0"
----
-
-## When to Use
-- Writing code that creates, processes, or visualizes `blockedImage` objects
-- Implementing `images.blocked.Adapter` subclasses for custom file formats
-- User needs help with large image data that doesn't fit in memory
-- User wants to leverage parallel computing for image processing tasks
-- Working with whole-slide images, geospatial rasters, 3D microscopy volumes, or tiled mosaics
-- **Any time a user is working with a TIFF file** — load this skill and check the file first with `imfinfo`. Use `blockedImage` if the file is large (dimensions > 10,000 pixels in any axis), has multiple channels beyond RGB, or contains multiple IFDs (could be pyramid levels, time series, or Z-stack slices)
-
-## When NOT to Use
-- Image fits comfortably in memory and no parallel processing is needed — use standard `imread`/`imwrite` workflows
-- General image display without `blockedImage` — use the `matlab-display-image` skill instead
-- Deep learning model architecture or training loop design — this skill covers data preparation with `blockedImageDatastore`, not network design
-
 # Large Image Processing with blockedImage
 
-**Reference files** (read on demand when the topic comes up):
-- `references/visualization.md` — imageshow, overlays, synced views, overview+detail, annotations
-- `references/training-and-labeling.md` — Image Labeler, labeled blockedImages, training datastores, DL inference
-- `references/3d-volumes.md` — 3D blocked images, 3D inference, 3D training data
-- `references/geospatial.md` — GeoTIFF, shapefiles, coordinate systems, spatial referencing
-- `references/data-discovery.md` — 7-step data discovery workflow, custom adapters, format conversion adapter selection, virtual composite adapters, adapter performance tips
-- `references/specialized-workflows.md` — writing block-by-block, coordinate systems, mask-based block selection, ExtraImages for pixel-level masking, in-place resume
-- `references/whole-slide-images.md` — importing WSI files via OpenSlide/Bio-Formats, choosing between libraries, display, downstream processing (segmentation, classification)
+Process, visualize, and write large images that don't fit in memory using `blockedImage` and `apply()`. Use `blockedImageDatastore` to create training datastores from blocked images for deep learning workflows. Also useful when the data fits in memory but you want parallel block-wise processing.
+
+**Sub-reference files** (read on demand when the topic comes up):
+- `references/blocked-visualization.md` — imageshow, overlays, synced views, overview+detail, annotations
+- `references/blocked-training-and-labeling.md` — Image Labeler, labeled blockedImages, training datastores, DL inference
+- `references/blocked-3d-volumes.md` — 3D blocked images, 3D inference, 3D training data
+- `references/blocked-geospatial.md` — GeoTIFF, shapefiles, coordinate systems, spatial referencing
+- `references/blocked-data-discovery.md` — 7-step data discovery workflow, custom adapters, format conversion adapter selection, virtual composite adapters, adapter performance tips
+- `references/blocked-specialized-workflows.md` — writing block-by-block, coordinate systems, mask-based block selection, ExtraImages for pixel-level masking, in-place resume
+- `references/blocked-whole-slide-images.md` — importing WSI files via OpenSlide/Bio-Formats, choosing between libraries, display, downstream processing (segmentation, classification)
 
 ## When to use blockedImage
 blockedImage is not only for data that exceeds RAM. Even when the data fits in memory, wrapping it as a blockedImage lets you harness a parallel cluster: each worker can independently read and write different blocks, enabling parallel partial reads and parallel writes into separate file blocks.
 
 **Always ask the user what their intent with the data is.** Ask about visualization, processing, DL training, archival, and whether they want to leverage parallel compute — even if the data fits in RAM.
 
+**Any time a user is working with a TIFF file** — check the file first with `imfinfo`. Use `blockedImage` if the file is large (dimensions > 10,000 pixels in any axis), has multiple channels beyond RGB, or contains multiple IFDs (could be pyramid levels, time series, or Z-stack slices).
+
 ## When the user points you at a directory or multi-file dataset
-**ALWAYS read `references/data-discovery.md` and follow its 7-step workflow** before writing any code. The workflow covers: inspecting file layout, parsing naming conventions, understanding user intent, choosing between single blockedImage vs. collection, assessing random access capabilities, checking for gaps/overlaps, and recommending an approach (built-in adapter, format conversion, or custom adapter).
+**ALWAYS read `references/blocked-data-discovery.md` and follow its 7-step workflow** before writing any code. The workflow covers: inspecting file layout, parsing naming conventions, understanding user intent, choosing between single blockedImage vs. collection, assessing random access capabilities, checking for gaps/overlaps, and recommending an approach (built-in adapter, format conversion, or custom adapter).
 
 ## Construction
 ```matlab
@@ -91,7 +73,11 @@ allResults = gather(bResults);  % load all structs into memory
 
 ### Limit work to real data
 - **Crop first.** `crop(bim, cstart, cend)` is virtual — no data copy, executes instantly. Use to restrict to a spatial ROI or single channel before processing.
-- **Use masks with `selectBlockLocations`.** Build a mask from a coarse level, then process only blocks overlapping the ROI. See `references/specialized-workflows.md` for the full pattern including `InclusionThreshold` and block-size tuning.
+- **Use masks with `selectBlockLocations`.** Build a mask from a coarse level, then process only blocks overlapping the ROI. See `references/blocked-specialized-workflows.md` for the full pattern including `InclusionThreshold` and block-size tuning.
+
+### Critical: data-dependent parameters and cross-block counting
+- **Compute data-dependent parameters once at a coarse level and pass the constant into `apply`.** Functions like `graythresh`, `stretchlim`, `adapthisteq`, and `rescale` compute statistics from their input — inside `apply`, each block sees only its own data, producing inconsistent thresholds/scales across blocks with no error or warning. Prototype on `gather(bim, Level=bim.NumLevels)`, capture the parameter, then pass it as a constant.
+- **Summing per-block object counts double-counts objects straddling block seams.** Use the "Unique detections via centroids" pattern below with `BorderSize` to deduplicate, or count on the stitched result.
 
 ### Key patterns
 - **Single pass.** Perform all pre/post-processing inside `fcn` to go through data only once.
@@ -109,13 +95,13 @@ allResults = gather(bResults);  % load all structs into memory
   For inconsistent detectors, add a second `apply()` pass with `BorderSize=BlockSize` to deduplicate by bounding-box overlap in global coordinates.
 - **Multi-resolution output.** Use `makeMultiLevel2D(bResult, Scales=[1 0.5 0.3 0.1])` to generate a pyramid from a single-level result. Use `"nearest"` interpolation for label/mask data. Or return multiple levels from `fcn` and combine with `concatenateLevels`.
 - **Small block output.** When per-block output is tiny (e.g., a count), use `gather()` to load all results into memory, or `write()` to rewrite with a larger block size.
-- **Resume.** Set `Resume=true` to continue a previously interrupted `apply()` from where it left off. For in-place resume with overwrite, see `references/specialized-workflows.md`.
+- **Resume.** Set `Resume=true` to continue a previously interrupted `apply()` from where it left off. For in-place resume with overwrite, see `references/blocked-specialized-workflows.md`.
 - **Multi-output apply.** When the processing function returns N outputs, `apply` returns N separate blockedImages. Use this to split channels in a single pass:
   ```matlab
   [o1, o2, o3, o4] = apply(bim, @(bs) splitChannels(bs), ...
       BlockSize=[10 2048 2048 4], UseParallel=true, OutputLocation=outDir);
   ```
-- **ExtraImages for pixel-level masking.** Pass a second blockedImage via `ExtraImages` to access it in the block function alongside the primary image. See `references/specialized-workflows.md` for the full pattern including resolution mismatch handling.
+- **ExtraImages for pixel-level masking.** Pass a second blockedImage via `ExtraImages` to access it in the block function alongside the primary image. See `references/blocked-specialized-workflows.md` for the full pattern including resolution mismatch handling.
 - **Pyramidal TIFF in one pass.** Generate multi-resolution levels and write as a single pyramidal TIFF using `LevelImages`:
   ```matlab
   [b1,b2,b3,b4] = apply(bim, @resizeBlocks);
@@ -154,10 +140,31 @@ bResult = apply(bim, @fcn, UseParallel=usepar, OutputLocation=outDir);
 ```
 Always include `UseParallel` when specifying `OutputLocation` — set it based on toolbox availability.
 
+## Whole-Slide Images: Level Selection
+
+Whole-slide image formats (SVS, NDPI, CZI) often append non-pyramid levels — label images, macro/overview photos, or thumbnail metadata — as extra entries in `NumLevels`. The coarsest level is **not always a pyramid level**. Before using a coarse level for tissue masking or parameter estimation, validate its aspect ratio against level 1:
+
+```matlab
+bim = blockedImage("slide.svs");
+sz1 = bim.Size(1, 1:2);  % Level 1 [rows cols]
+aspectL1 = sz1(2) / sz1(1);
+% Find the coarsest TRUE pyramid level
+for lev = bim.NumLevels:-1:1
+    szL = bim.Size(lev, 1:2);
+    if abs(szL(2)/szL(1) - aspectL1) / aspectL1 < 0.05
+        coarseLevel = lev;
+        break;
+    end
+end
+coarseImg = gather(bim, Level=coarseLevel);
+```
+
+Do not blindly use `Level=bim.NumLevels` — you may get the slide's paper label or a macro photograph instead of a downsampled tissue image.
+
 ## Visualization
 **Choose 2D vs 3D based on the data, not convenience:**
-- **3D volumes (Z-stacks, CT, MRI, microscopy stacks):** Default to `volshow` + `viewer3d`. Use `OverlayData` for multi-channel overlay, `SlicePlanes` for interactive browsing, and `linkviewers` for overview+detail. Read `references/3d-volumes.md` for full patterns. Do NOT flatten 3D data into 2D slice-by-slice viewers — that discards spatial context and ignores the 3D tooling.
-- **2D images (whole-slide, satellite, mosaics):** Use `imageshow` + `viewer2d`. Read `references/visualization.md` for overlays, synced views, overview+detail, and annotations.
+- **3D volumes (Z-stacks, CT, MRI, microscopy stacks):** Default to `volshow` + `viewer3d`. Use `OverlayData` for multi-channel overlay, `SlicePlanes` for interactive browsing, and `linkviewers` for overview+detail. Read `references/blocked-3d-volumes.md` for full patterns. Do NOT flatten 3D data into 2D slice-by-slice viewers — that discards spatial context and ignores the 3D tooling.
+- **2D images (whole-slide, satellite, mosaics):** Use `imageshow` + `viewer2d`. Read `references/blocked-visualization.md` for overlays, synced views, overview+detail, and annotations.
 
 If the data has a Z/depth/slice dimension, it is 3D — use the 3D path even if each slice is a separate file.
 
@@ -166,7 +173,7 @@ Use `write(bim, destination)` to convert between formats or re-chunk data:
 ```matlab
 write(bim, "output.tif", BlockSize=[512 512 3]);
 ```
-For adapter selection guidance when converting (JPEG vs PNG vs H5Blocks), see "Adapter Preference for Format Conversion" in `references/data-discovery.md`.
+For adapter selection guidance when converting (JPEG vs PNG vs H5Blocks), see "Adapter Preference for Format Conversion" in `references/blocked-data-discovery.md`.
 
 ----
 

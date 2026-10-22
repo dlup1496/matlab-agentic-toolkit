@@ -23,6 +23,15 @@ Before choosing a function, inspect both class and foreground polarity:
 | Rectangle | `strel("rectangle", [h w])` | Directional (non-square) |
 | Line | `strel("line", len, angle)` | Directional filtering (e.g., detecting scratches) |
 | Diamond | `strel("diamond", radius)` | 4-connected equivalent of disk |
+| Non-flat (height) | `offsetstrel("ball", radius, height)` | Grayscale morphology with a height profile |
+
+**Non-flat structuring elements** (`offsetstrel`) have a height value at each pixel, not just on/off membership. Use them for grayscale morphological smoothing, surface fitting, or envelope extraction where the SE shape should follow a curved profile (e.g., ball, arbitrary height matrix). `offsetstrel` accepts `"ball"` and `"arbitrary"` geometries:
+
+```matlab
+se = offsetstrel("ball", 5, 3);        % Ball with radius 5, height 3
+se = offsetstrel("arbitrary", heights); % Custom height matrix
+smoothed = imclose(img, se);            % Grayscale closing with curved SE
+```
 
 `imdilate` and `imerode` automatically exploit SE decomposition and binary packing — do not hand-implement packing to optimize ordinary morphology. Disk and ball SEs use an approximation that is faster but can change the exact discrete footprint; other documented geometric decompositions (line, rectangle, square, diamond) are exact. Inspect `se.Neighborhood` to see the pixel footprint, or `decompose(se)` to see the decomposed sequence.
 

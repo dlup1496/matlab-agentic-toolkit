@@ -71,7 +71,7 @@ function roadFeatures = helperClassifyRoadFeatures(laneNetwork, rrHDMap, options
     % Use per-lane mean Z directly for classification (more data points)
     validZ = meanZ(meanZ ~= 0);
 
-    if isempty(validZ) || range(validZ) < 3.0
+    if isempty(validZ) || (max(validZ) - min(validZ)) < 3.0
         % Insufficient elevation variation (< 3m) — everything is "ground"
         roadFeatures = buildSingleFeature(lanes, "ground", meanZ);
         return;

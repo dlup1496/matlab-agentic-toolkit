@@ -5,6 +5,21 @@ the datastore integrates correctly with the MATLAB ecosystem.
 
 Reference: https://www.mathworks.com/help/matlab/import_export/testing-guidelines-for-custom-datastores.html
 
+**When the task asks for tests, writing the test file is a required deliverable
+— do not stop after the class.** Always include these core tests, in a separate
+test-class file:
+
+- `testConstruction`, `testReadReturnsData`, `testReadallReturnsAllData`
+- `testHasdataExhaustion`
+- **`testProgressRange`** — the single most commonly omitted test. Include it
+  verbatim from the template below: assert `progress(ds) == 0` *before* any
+  read, `progress(ds) >= 0 && progress(ds) <= 1` *during* the read loop, and
+  `progress(ds) == 1` *after* the datastore is exhausted. All three checks must
+  be present, and they belong in the test file — not inlined in the datastore
+  class.
+
+Add the partition/shuffle tests below only for the mixins the class actually uses.
+
 ## Test Class Template
 
 ```matlab

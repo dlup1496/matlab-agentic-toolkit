@@ -3,7 +3,7 @@
 > **If the `matlab-display-image` skill is available, load it for full imageshow/viewer2d guidance.** This file covers blockedImage-specific visualization patterns only.
 
 ## Strategy: overview + detail for very large data
-When data is too large to render at full resolution interactively, use a two-panel layout: a low-resolution overview for spatial orientation, and a high-resolution detail view for a cropped region of interest. This applies to both 2D (`viewer2d` + `imageshow`) and 3D (`viewer3d` + `volshow`). See "Overview + detail navigation" below for the 2D pattern, and `3d-volumes.md` "Overview + detail for large 3D volumes" for the 3D pattern.
+When data is too large to render at full resolution interactively, use a two-panel layout: a low-resolution overview for spatial orientation, and a high-resolution detail view for a cropped region of interest. This applies to both 2D (`viewer2d` + `imageshow`) and 3D (`viewer3d` + `volshow`). See "Overview + detail navigation" below for the 2D pattern, and `blocked-3d-volumes.md` "Overview + detail for large 3D volumes" for the 3D pattern.
 
 ## Basic display (R2024b+)
 Use `imageshow` for display and exploration:
@@ -98,7 +98,7 @@ hOverview.ResolutionLevel = bim.NumLevels;  % always show coarsest
 ```
 
 ## 3D volume visualization
-For 3D blockedImage volumes, use `volshow` and `viewer3d` instead of `imageshow`/`viewer2d`. See `3d-volumes.md` for full `volshow` patterns (rendering styles, slice planes, overlays, side-by-side comparison with `linkviewers`).
+For 3D blockedImage volumes, use `volshow` and `viewer3d` instead of `imageshow`/`viewer2d`. See `blocked-3d-volumes.md` for full `volshow` patterns (rendering styles, slice planes, overlays, side-by-side comparison with `linkviewers`).
 
 ----
 
